@@ -22,7 +22,7 @@ To create a old school rpg style combat system.
 * Storyline
 * Save/Load
 
-####Check ADRs for progress.
+#### Check ADRs for progress.
 
 ### How To Run
 
