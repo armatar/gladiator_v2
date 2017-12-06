@@ -5,6 +5,6 @@ Rake::TestTask.new do |t|
   t.warning = false
 end
 
-desc "Run tests"
+desc "Run tests "
 
 task default: :test
