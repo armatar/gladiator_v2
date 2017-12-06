@@ -17,7 +17,12 @@ To create a old school rpg style combat system.
 * Multiple Enemies
 * Multiple Allies/Characters
 
-Check ADRs for progress.
+### Stretch Features
+
+* Storyline
+* Save/Load
+
+####Check ADRs for progress.
 
 ### How To Run
 
