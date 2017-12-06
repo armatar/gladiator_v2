@@ -1,5 +1,4 @@
-require 'minitest/autorun'
-require 'byebug'
+require_relative '../test_helper.rb'
 require_relative "../lib/character.rb"
 
 class CharacterTest < Minitest::Test

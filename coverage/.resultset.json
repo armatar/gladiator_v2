@@ -1,0 +1,66 @@
+{
+  "Unknown Test Framework": {
+    "coverage": {
+    },
+    "timestamp": 1512593005
+  },
+  "MiniTest": {
+    "coverage": {
+      "/Users/audra.matar/git_repos/ruby-projects/gladiator_v2/lib/character.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1512594061
+  }
+}
