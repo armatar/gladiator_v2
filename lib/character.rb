@@ -6,5 +6,12 @@ class Character
   attr_reader :damage, :one_hand_damage, :dual_wield_damage, :unarmed_damage, :two_hand_damage, :staff_damage
   attr_reader :one_hand_prof, :two_hand_prof, :dual_wield_prof, :unarmed_prof, :magic_prof
 
-  
+  def initialize(name)
+    @name = name
+    create_character_base
+  end
+
+  def create_character_base
+    @level = 1
+  end
 end
