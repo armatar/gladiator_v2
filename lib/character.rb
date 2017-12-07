@@ -32,36 +32,9 @@ class Character
   def set_base_attributes
     @equipped_weapon = { name: "fists", type: "unarmed weapon", dice: 3, 
       number_of_dice: 1, number_of_attacks: 2, crit: 20, crit_damage: 3, enchantment: 0 }
-    @init = 0
-    @ac = 0
-    @bab = 0
-    @hp = 0
-    @max_hp = 0
-    @mana = 0
-    @max_mana = 0
-    @mag_resist = 0
-    @cbm = 0
-    @cbm_def = 0
     @shield_bonus = 0
     @armor_bonus = 0
     @spell_failure_chance = 0
-    @str_modifier = 0
-    @dex_modifier = 0
-    @con_modifier = 0
-    @mag_modifier = 0
-    @cha_modifier = 0
-    @attack = 0
-    @damage = 0
-    @one_hand_atk = 0
-    @dual_wield_atk = 0
-    @two_hand_atk = 0
-    @unarmed_atk = 0
-    @staff_atk = 0
-    @one_hand_damage = 0
-    @dual_wield_damage = 0
-    @two_hand_damage = 0
-    @unarmed_damage = 0
-    @staff_damage = 0
     @one_hand_prof = 0
     @dual_wield_prof = 0
     @two_hand_prof = 0
