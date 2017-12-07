@@ -3,3 +3,5 @@ rvm:
  - 2.4.0
 script:
  - rake
+os:
+ - osx
