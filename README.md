@@ -2,6 +2,9 @@
 
 This is a new attempt to create my Gladiator game with a bit more of a combat engine focus.
 
+[![Build Status](https://travis-ci.org/armatar/gladiator_v2.svg?branch=master)](https://travis-ci.org/armatar/gladiator_v2)
+[![Coverage Status](https://coveralls.io/repos/github/armatar/gladiator_v2/badge.svg)](https://coveralls.io/github/armatar/gladiator_v2)
+
 ## Goal Of The Game
 
 To create a old school rpg style combat system.
