@@ -1,14 +1,16 @@
 require_relative '../test_helper.rb'
 require_relative "../lib/character.rb"
+require 'byebug'
 
 class CharacterTest < MiniTest::Test
-  def setup
-    #@character = Character.new("Test Character")
-  end
+
   @character = Character.new("Test Character")
 
-  should_not_be_nil = {"name" => @character.name, "level" => @character.level, "ac" => @character.ac, "bab" => @character.bab, 
+  should_not_be_nil = {"name" => @character.name, "level" => @character.level, "ac" => @character.ac, "bab" => @character.bab, "init" => @character.init,
                        "hp" => @character.hp, "max_hp" => @character.max_hp, "str" => @character.str, "dex" => @character.dex, 
+                       "mana" => @character.mana, "max_mana" => @character.max_mana, "mag resist" => @character.mag_resist, "cbm" => @character.cbm,
+                       "cbm def" => @character.cbm_def, "shield_bonus" => @character.shield_bonus, "armor bonus" => @character.armor_bonus,
+                       "spell_failure_chance" => @character.spell_failure_chance, "equipped weapon" => @character.equipped_weapon, 
                        "con" => @character.con, "mag" => @character.mag, "cha" => @character.cha, "str_modifier" => @character.str_modifier, 
                        "dex_modifier" => @character.dex_modifier, "con_modifier" => @character.con_modifier, 
                        "mag_modifier" => @character.mag_modifier, "cha_modifier" => @character.cha_modifier, 
