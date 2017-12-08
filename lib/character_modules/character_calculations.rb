@@ -20,7 +20,8 @@ module CharacterCalculations
 
   def set_first_hp(level, range, con_modifier)
     hp = range[1] + con_modifier
-    level-1.times do
+    (level-1).times do
+      puts "here"
       hp += rand(range[0]..range[1]) + con_modifier
     end
     @hp = hp
@@ -49,29 +50,6 @@ module CharacterCalculations
     calculate_magic_resist(@mag_modifier, @cha_modifier, @magic_prof)
     calculate_cbm
     calculate_mana
-  end
-
-  def set_first_hp(level, range, con_modifier)
-    hp = 0
-    level.times do
-      hp += rand(range[0]..range[1]) + con_modifier
-    end
-    @hp = hp
-    @max_hp = hp
-  end
-
-  def get_hp_range(con_modifier)
-    min = 1
-    max = 1
-    if con_modifier + 1 < 2
-      max = 6
-    else
-      max = 6 * (con_modifier+1)
-    end
-    min = max/2
-
-    range = [min, max]
-    return range
   end
 
   def calculate_bab(level)

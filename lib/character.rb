@@ -45,8 +45,3 @@ class Character
     @magic_prof = 0
   end
 end
-
-
-
-character = Character.new("Test")
-character.print_character_sheet

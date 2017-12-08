@@ -3,4 +3,5 @@ require_rel 'character_modules'
 
 module CharacterModules
   include CharacterCalculations
+  include CharacterUI
 end

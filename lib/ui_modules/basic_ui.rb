@@ -6,4 +6,8 @@ module BasicUI
   def clear_screen
     system "clear"
   end
+
+  def new_line
+    puts "\n"
+  end
 end
