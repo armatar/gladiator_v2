@@ -20,7 +20,8 @@ class CharacterTest < MiniTest::Test
                        "dual_wield_damage" => @character.dual_wield_damage, "unarmed_damage" =>@character.unarmed_damage, 
                        "two_hand_damage" => @character.two_hand_damage, "staff_damage" => @character.staff_damage, 
                        "one_hand_prof" => @character.one_hand_prof, "two_hand_prof" => @character.two_hand_prof, 
-                       "dual_wield_prof" => @character.dual_wield_prof, "unarmed_prof" => @character.unarmed_prof, "magic_prof" => @character.magic_prof}
+                       "dual_wield_prof" => @character.dual_wield_prof, "unarmed_prof" => @character.unarmed_prof, "magic_prof" => @character.magic_prof,
+                       "dead" => @character.dead}
 
   should_not_be_nil.each_pair do |name, attribute|
     define_method("test_#{name}_does_not_return_nill") do

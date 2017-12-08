@@ -29,9 +29,9 @@ To create a old school rpg style combat system.
 
 ### How To Run
 
-Currently no way to run this as it's just getting started.
+You can run *ruby main.rb* to begin the combat simulator.
 
 ### How To Run Tests
 
-Same as above. Will update when this has changed.
+Run rake command to run all tests.
  

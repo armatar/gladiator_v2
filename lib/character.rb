@@ -7,7 +7,8 @@ class Character
   include CharacterModules
   include UIModules
 
-  attr_reader :name, :level, :ac, :bab, :hp, :max_hp, :init, :mana, :max_mana
+  attr_accessor :hp, :mana, :dead
+  attr_reader :name, :level, :ac, :bab, :max_hp, :init, :max_mana
   attr_reader :mag_resist, :cbm, :cbm_def, :shield_bonus, :armor_bonus, :spell_failure_chance
   attr_reader :str, :dex, :con, :mag, :cha
   attr_reader :equipped_weapon, :equipped_shield
@@ -22,6 +23,7 @@ class Character
   end
 
   def create_character_base
+    @dead = false
     @level = 1
     @str = 8
     @dex = 8
@@ -30,6 +32,7 @@ class Character
     @cha = 8
     set_base_attributes
     calculate_initial_stats
+    @init = rand(1..5)
   end
 
   def set_base_attributes

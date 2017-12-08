@@ -11,4 +11,4 @@ character6 = Character.new("Ally 3")
 
 combat = Combat.new([character1, character2, character6], [character3, character4, character5])
 
-combat.display_combat_screen
+combat.auto_combat

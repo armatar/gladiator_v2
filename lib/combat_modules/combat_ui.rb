@@ -17,6 +17,10 @@ module CombatUI
     end
     new_line
     array.each_index do | index |
+      print "Init: " + array[index].init.to_s.ljust(10)
+    end
+    new_line
+    array.each_index do | index |
       print "HP: " + array[index].hp.to_s + "/" + array[index].max_hp.to_s.ljust(10)
     end
     new_line
@@ -53,7 +57,7 @@ module CombatUI
 
   def display_combat_screen
     clear_screen
-    display_battle_log(["Log one.", "line two"])
+    display_battle_log(@battle_log)
     display_stats(@enemies)
     display_battle_icon(@enemies)
     display_battle_icon(@allies)
