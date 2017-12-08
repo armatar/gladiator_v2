@@ -19,8 +19,8 @@ module CharacterCalculations
   end
 
   def set_first_hp(level, range, con_modifier)
-    hp = 0
-    level.times do
+    hp = range[1] + con_modifier
+    level-1.times do
       hp += rand(range[0]..range[1]) + con_modifier
     end
     @hp = hp

@@ -1,8 +1,11 @@
 require 'byebug'
+require 'paint'
 require_relative 'character_modules.rb'
+require_relative 'ui_modules.rb'
 
 class Character
   include CharacterModules
+  include UIModules
 
   attr_reader :name, :level, :ac, :bab, :hp, :max_hp, :init, :mana, :max_mana
   attr_reader :mag_resist, :cbm, :cbm_def, :shield_bonus, :armor_bonus, :spell_failure_chance
@@ -46,3 +49,4 @@ end
 
 
 character = Character.new("Test")
+character.print_character_sheet
