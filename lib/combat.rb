@@ -5,6 +5,8 @@ class Combat
   include CombatModules
   include UIModules
 
+  attr_reader :battle_log
+
   def initialize(allies, enemies)
     @battle_log = []
     @allies = allies
@@ -23,6 +25,9 @@ class Combat
 
   def auto_attack_round
     @order_of_play.each do | character |
+      if combat_over?
+        return false
+      end
       if !character.dead
         if @allies.include?(character)
           if character.controlled
@@ -35,9 +40,6 @@ class Combat
         else
           auto_attack_round_helper(character, @allies)
         end
-      end
-      if combat_over?
-        return false
       end
     end
     return true
