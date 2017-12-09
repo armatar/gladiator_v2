@@ -30,4 +30,9 @@ module BasicUI
   def print_error_message(message)
     puts Paint[message, :red]
   end
+
+  def pause
+    puts "Press [enter] to continue..."
+    gets.chomp
+  end
 end

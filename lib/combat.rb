@@ -16,26 +16,24 @@ class Combat
     continue_combat = true
 
     while continue_combat
-      display_combat_screen
       continue_combat = auto_attack_round
     end
     display_battle_log(@battle_log)
   end
 
   def auto_attack_round
-    @battle_log = []
     @order_of_play.each do | character |
       if !character.dead
         if @allies.include?(character)
-          attack_object = character.create_attack_object(@enemies)
-          @battle_log.push(attack_object[:message])
-          defense_object = @enemies[attack_object[:target]].defend(attack_object)
-          @battle_log.push(defense_object[:message])
+          if character.controlled
+            display_combat_screen
+            auto_attack_round_helper(character, @enemies)
+            @battle_log = []
+          else
+            auto_attack_round_helper(character, @enemies)
+          end
         else
-          attack_object = character.create_attack_object(@allies)
-          @battle_log.push(attack_object[:message])
-          defense_object = @allies[attack_object[:target]].defend(attack_object)
-          @battle_log.push(defense_object[:message])
+          auto_attack_round_helper(character, @allies)
         end
       end
       if combat_over?
@@ -46,6 +44,14 @@ class Combat
   end
 
   private
+
+    def auto_attack_round_helper(character, target_hash)
+      attack_object = character.create_attack_object(target_hash)
+      @battle_log.push(attack_object[:message])
+      defense_object = target_hash[attack_object[:target]].defend(attack_object)
+      @battle_log.push(defense_object[:message])
+    end
+
     def get_order_of_play(allies, enemies)
       order_of_play = []
       allies.each do |ally|

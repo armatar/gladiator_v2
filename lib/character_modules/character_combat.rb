@@ -27,6 +27,7 @@ module CharacterCombat
       message = ["Hit! #{@name.upcase} takes #{attack_object[:damage]} damage!"]
       if @hp <= 0
         @dead = true
+        @hp = 0
         message.push("#{@name.upcase} has died!")
       end
       return {message: message}

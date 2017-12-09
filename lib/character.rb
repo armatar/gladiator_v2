@@ -8,7 +8,7 @@ class Character
   include UIModules
 
   attr_accessor :hp, :mana, :dead
-  attr_reader :name, :level, :ac, :bab, :max_hp, :init, :max_mana
+  attr_reader :name, :level, :ac, :bab, :max_hp, :init, :max_mana, :controlled
   attr_reader :mag_resist, :cbm, :cbm_def, :shield_bonus, :armor_bonus, :spell_failure_chance
   attr_reader :str, :dex, :con, :mag, :cha
   attr_reader :equipped_weapon, :equipped_shield
@@ -23,6 +23,7 @@ class Character
   end
 
   def create_character_base
+    @controlled = false
     @dead = false
     @level = 1
     @str = 8

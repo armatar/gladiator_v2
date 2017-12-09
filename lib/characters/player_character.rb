@@ -3,8 +3,9 @@ require_relative 'player_character_modules.rb'
 
 class PlayerCharacter < Character
   include PlayerCharacterModules
-  
+
   def initialize(name)
     super(name)
+    @controlled = true
   end
 end

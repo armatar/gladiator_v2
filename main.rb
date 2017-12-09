@@ -3,7 +3,7 @@ require_relative "lib/characters/player_character.rb"
 require_relative "lib/combat.rb"
 
 character1 = PlayerCharacter.new("PC")
-character2 = Character.new("Ally 1")
+character2 = PlayerCharacter.new("Ally 1")
 character3 = Character.new("Enemy 1")
 character4 = Character.new("Enemy 2")
 character5 = Character.new("Enemy 3")

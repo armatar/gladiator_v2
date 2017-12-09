@@ -17,10 +17,6 @@ module CombatUI
     end
     new_line
     array.each_index do | index |
-      print "Init: " + array[index].init.to_s.ljust(10)
-    end
-    new_line
-    array.each_index do | index |
       print "HP: " + array[index].hp.to_s + "/" + array[index].max_hp.to_s.ljust(10)
     end
     new_line
