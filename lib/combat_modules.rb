@@ -3,4 +3,5 @@ require_rel 'combat_modules'
 
 module CombatModules
   include CombatUI
+  include CombatHelpers
 end

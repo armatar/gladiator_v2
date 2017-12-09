@@ -28,10 +28,10 @@ class Combat
       if !character.dead
         if @allies.include?(character)
           index = get_target_to_attack(@enemies)
-          @enemies[index]= attack(character, @enemies[index])
+          @battle_log.push(@enemies[index].defend(character.auto_attack))
         else
           index = get_target_to_attack(@allies)
-          @allies[index] = attack(character, @allies[index])
+          @battle_log.push(@allies[index].defend(character.auto_attack))
         end
       end
       if combat_over?
@@ -39,15 +39,6 @@ class Combat
       end
     end
     return true
-  end
-
-  def attack(attacker, target)
-    target.hp -= 1
-    @battle_log.push("#{attacker.name} attacks #{target.name}!")
-    if target.hp <= 0
-      target.dead = true
-    end
-    return target
   end
 
   private
@@ -79,7 +70,11 @@ class Combat
           all_enemies_dead = false
         end
       end
-      if all_allies_dead || all_enemies_dead
+      if all_allies_dead
+        @battle_log.push("All allies have died! Enemies win!")
+        return true
+      elsif all_enemies_dead
+        @battle_log.push("All enemies have died! Allies win!")
         return true
       else
         return false
