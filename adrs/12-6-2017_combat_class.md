@@ -1,15 +1,11 @@
 # Create Combat
 
-### Status: proposed
+### Status: completed
 
 ## Context: 
 
-Need to create a class that helps orchestrate combat. Characters know how to fight, but combat is the referee that ensures that everyone gets a turn. 
+Need to create a basic structure for combat involving characters that know how to fight and a middle man referee that ensures that everyone gets a turn and works as a go between to ensure that the characters interact properly. This will create a basic means for the game to function.
 
 ## Decision: 
 
-Build combat class.
-
-## Consequences:
-
-This will make combat possible.
+There should be a combat module specific to the characters and an overarching combat entity that handles the mediation. 
