@@ -27,12 +27,14 @@ class Combat
     @order_of_play.each do | character |
       if !character.dead
         if @allies.include?(character)
-          index = get_target_to_attack(@enemies)
-          defense_object = @enemies[index].defend(character.auto_attack)
+          attack_object = character.auto_attack(@enemies)
+          @battle_log.push(attack_object[:message])
+          defense_object = @enemies[attack_object[:target]].defend(attack_object)
           @battle_log.push(defense_object[:message])
         else
-          index = get_target_to_attack(@allies)
-          defense_object = @allies[index].defend(character.auto_attack)
+          attack_object = character.auto_attack(@allies)
+          @battle_log.push(attack_object[:message])
+          defense_object = @allies[attack_object[:target]].defend(attack_object)
           @battle_log.push(defense_object[:message])
         end
       end
@@ -81,17 +83,5 @@ class Combat
       else
         return false
       end
-    end
-
-    def get_target_to_attack(array)
-      invalid = true
-      index = nil
-      while invalid
-        index = rand(0..(array.length-1))
-        if !array[index].dead
-          invalid = false
-        end
-      end
-      return index
     end
 end

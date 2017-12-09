@@ -29,7 +29,8 @@ class CharacterTest < MiniTest::Test
     end
   end
 
-  atk_obj_attributes = {"attack roll" => @character.auto_attack[:attack], "damage" => @character.auto_attack[:damage]}
+  atk_obj_attributes = {"attack roll" => @character.auto_attack([@character])[:attack], "damage" => @character.auto_attack([@character])[:damage],
+                        "target" => @character.auto_attack([@character])[:target], "message" => @character.auto_attack([@character])[:message]}
 
   atk_obj_attributes.each_pair do |name, attribute|
     define_method("test_#{name}_exists_in_attack_object") do

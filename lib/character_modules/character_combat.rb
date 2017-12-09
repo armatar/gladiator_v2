@@ -7,10 +7,12 @@ module CharacterCombat
     return roll_result
   end
 
-  def auto_attack
+  def auto_attack(possible_targets)
     attack = roll_dice(20, 1) + @attack
     damage = roll_dice(6, 1) + @damage
-    return {attack: attack, damage: damage}
+    target = get_random_target(possible_targets)
+    message = ["#{@name} attacks #{possible_targets[target].name}!"]
+    return {attack: attack, damage: damage, target: target, message: message}
   end
 
   def defend(attack_object)
@@ -25,5 +27,17 @@ module CharacterCombat
     else
       return {message: "Miss!"}
     end
+  end
+
+  def get_random_target(array)
+    invalid = true
+    index = nil
+    while invalid
+      index = rand(0..(array.length-1))
+      if !array[index].dead
+        invalid = false
+      end
+    end
+    return index
   end
 end
