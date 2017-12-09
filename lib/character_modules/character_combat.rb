@@ -21,9 +21,9 @@ module CharacterCombat
         @dead = true
         message.push("#{@name.upcase} has died!")
       end
-      return message
+      return {message: message}
     else
-      return ["Miss!"]
+      return {message: "Miss!"}
     end
   end
 end

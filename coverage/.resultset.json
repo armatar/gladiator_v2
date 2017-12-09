@@ -60,6 +60,7 @@
         1,
         1,
         1,
+        1,
         null
       ],
       "/Users/audra.matar/git_repos/ruby-projects/gladiator_v2/lib/character_modules/character_calculations.rb": [
@@ -237,6 +238,37 @@
         null,
         null
       ],
+      "/Users/audra.matar/git_repos/ruby-projects/gladiator_v2/lib/character_modules/character_combat.rb": [
+        1,
+        1,
+        4,
+        4,
+        4,
+        null,
+        4,
+        null,
+        null,
+        1,
+        2,
+        2,
+        2,
+        null,
+        null,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        1,
+        null,
+        null,
+        null
+      ],
       "/Users/audra.matar/git_repos/ruby-projects/gladiator_v2/lib/character_modules/character_ui.rb": [
         1,
         null,
@@ -291,7 +323,7 @@
         null
       ]
     },
-    "timestamp": 1512768163
+    "timestamp": 1512832040
   },
   "Unknown Test Framework": {
     "coverage": {

@@ -28,10 +28,12 @@ class Combat
       if !character.dead
         if @allies.include?(character)
           index = get_target_to_attack(@enemies)
-          @battle_log.push(@enemies[index].defend(character.auto_attack))
+          defense_object = @enemies[index].defend(character.auto_attack)
+          @battle_log.push(defense_object[:message])
         else
           index = get_target_to_attack(@allies)
-          @battle_log.push(@allies[index].defend(character.auto_attack))
+          defense_object = @allies[index].defend(character.auto_attack)
+          @battle_log.push(defense_object[:message])
         end
       end
       if combat_over?
