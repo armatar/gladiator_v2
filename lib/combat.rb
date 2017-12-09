@@ -27,12 +27,12 @@ class Combat
     @order_of_play.each do | character |
       if !character.dead
         if @allies.include?(character)
-          attack_object = character.auto_attack(@enemies)
+          attack_object = character.create_attack_object(@enemies)
           @battle_log.push(attack_object[:message])
           defense_object = @enemies[attack_object[:target]].defend(attack_object)
           @battle_log.push(defense_object[:message])
         else
-          attack_object = character.auto_attack(@allies)
+          attack_object = character.create_attack_object(@allies)
           @battle_log.push(attack_object[:message])
           defense_object = @allies[attack_object[:target]].defend(attack_object)
           @battle_log.push(defense_object[:message])

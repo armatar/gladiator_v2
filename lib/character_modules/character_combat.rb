@@ -1,4 +1,12 @@
 module CharacterCombat
+  def create_attack_object(possible_targets)
+    target = get_random_target(possible_targets)
+    msg_and_target = {target: target, message: ["#{@name} attacks #{possible_targets[target].name}!"]}
+    attack_object = auto_attack(possible_targets)
+    attack_object.merge!(msg_and_target)
+    return attack_object
+  end
+
   def roll_dice(dice, number)
     roll_result = 0
     number.times do
@@ -10,9 +18,7 @@ module CharacterCombat
   def auto_attack(possible_targets)
     attack = roll_dice(20, 1) + @attack
     damage = roll_dice(6, 1) + @damage
-    target = get_random_target(possible_targets)
-    message = ["#{@name} attacks #{possible_targets[target].name}!"]
-    return {attack: attack, damage: damage, target: target, message: message}
+    return {attack: attack, damage: damage}
   end
 
   def defend(attack_object)

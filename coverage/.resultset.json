@@ -241,6 +241,14 @@
       "/Users/audra.matar/git_repos/ruby-projects/gladiator_v2/lib/character_modules/character_combat.rb": [
         1,
         1,
+        4,
+        4,
+        4,
+        4,
+        4,
+        null,
+        null,
+        1,
         8,
         8,
         8,
@@ -249,8 +257,6 @@
         null,
         null,
         1,
-        4,
-        4,
         4,
         4,
         4,
@@ -551,7 +557,7 @@
         null
       ]
     },
-    "timestamp": 1512842400
+    "timestamp": 1512845920
   },
   "Unknown Test Framework": {
     "coverage": {

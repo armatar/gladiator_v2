@@ -1,10 +1,8 @@
 module PlayerCharacterCombat
-  def auto_attack(enemies)
-    attack = roll_dice(20, 1) + @attack
-    damage = roll_dice(6, 1) + @damage
+  def create_attack_object(enemies)
     target = select_target(enemies)
-    message = ["#{@name} attacks #{enemies[target].name}!"]
-    attack_object = {attack: attack, damage: damage, target: target, message: message}
+    attack_object = auto_attack(enemies)
+    attack_object[:target] = target
     return attack_object
   end
 
@@ -17,7 +15,7 @@ module PlayerCharacterCombat
           return index
         end
       end
-      print_error_message("Invalid target. Try again.")
+      print_error_message("Invalid target #{answer}. Try again.")
     end
   end
 end
