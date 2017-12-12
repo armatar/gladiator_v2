@@ -2,6 +2,7 @@ require 'byebug'
 require 'paint'
 require_relative 'character_modules.rb'
 require_relative 'ui_modules.rb'
+require_relative 'items.rb'
 
 class Character
   include CharacterModules
@@ -37,8 +38,7 @@ class Character
   end
 
   def set_base_attributes
-    @equipped_weapon = { name: "fists", type: "unarmed weapon", dice: 3, 
-      number_of_dice: 1, number_of_attacks: 2, crit: 20, crit_damage: 3, enchantment: 0 }
+    @equipped_weapon = Items.default_weapon
     @shield_bonus = 0
     @armor_bonus = 0
     @spell_failure_chance = 0

@@ -1,5 +1,6 @@
 module CharacterCombat
   def create_attack_object(possible_targets)
+    @attack_message = ""
     target = get_random_target(possible_targets)
     msg_and_target = {target: target, message: ["#{@name} attacks #{possible_targets[target].name}!"]}
     attack_object = auto_attack(possible_targets)
@@ -16,24 +17,31 @@ module CharacterCombat
   end
 
   def auto_attack(possible_targets)
-    attack = roll_dice(20, 1) + @attack
-    damage = roll_dice(6, 1) + @damage
+    attack = []
+    damage = []
+    @equipped_weapon[:number_of_attacks].times do 
+      attack.push(roll_dice(20, 1) + @attack)
+      damage.push(roll_dice(6, 1) + @damage)
+    end
     return {attack: attack, damage: damage}
   end
 
   def defend(attack_object)
-    if attack_object[:attack] >= @ac
-      @hp -= attack_object[:damage]
-      message = ["Hit! #{@name.upcase} takes #{attack_object[:damage]} damage!"]
-      if @hp <= 0
-        @dead = true
-        @hp = 0
-        message.push("#{@name.upcase} has died!")
+    message = []
+    attack_object[:attack].each_with_index do |attack, index|
+      if attack >= @ac
+        @hp -= attack_object[:damage][index]
+        message.push("Hit! #{@name.upcase} takes #{attack_object[:damage][index]} damage!")
+      else
+        message.push("Miss!")
       end
-      return {message: message}
-    else
-      return {message: "Miss!"}
     end
+    if @hp <= 0
+      @dead = true
+      @hp = 0
+      message.push("#{@name.upcase} has died!")
+    end
+    return {message: message}
   end
 
   def get_random_target(array)

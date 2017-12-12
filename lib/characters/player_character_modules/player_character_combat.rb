@@ -23,7 +23,7 @@ module PlayerCharacterCombat
   def select_action(enemies)
     valid_action = false
     while !valid_action
-      answer = ask_question("What action do you wish for #{@name} to take?", "Enter the number beside the action.")
+      answer = ask_question("What action do you wish for #{@name} to take?", "Select the number from combat options.")
       case answer
         when "1"
           return auto_attack(enemies)
@@ -34,6 +34,7 @@ module PlayerCharacterCombat
         when "4"
           print_error_message("Option currently unavailble. Try again.")
         else
+          print_error_message("Invalid option. Try again.")
       end
     end
   end
