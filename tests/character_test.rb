@@ -37,7 +37,7 @@ class CharacterTest < MiniTest::Test
       refute_nil(attribute)
     end
   end
-  test_attack_object = {attack: 1, damage: 1}
+  test_attack_object = {attack: [1], damage: [1]}
   defence_obj_attributes = {"message" => @character.defend(test_attack_object)[:message]}
 
   defence_obj_attributes.each_pair do |name, attribute|

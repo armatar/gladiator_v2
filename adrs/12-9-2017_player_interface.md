@@ -1,6 +1,6 @@
 # Create Player Interface
 
-### Status: accepted
+### Status: completed
 
 ## Context: 
 
