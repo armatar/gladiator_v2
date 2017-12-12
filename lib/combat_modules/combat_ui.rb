@@ -51,6 +51,15 @@ module CombatUI
     print_line
   end
 
+  def display_combat_options
+    new_line
+    new_line
+    puts Paint["C O M B A T  O P T I O N S", :bold]
+    puts "-" * 27
+    puts "1. Attack with equipped weapon".ljust(35) + "2. Cast a spell"
+    puts "3. Perform a skill".ljust(35) + "4. Use an item"
+  end
+
   def display_combat_screen
     clear_screen
     display_battle_log(@battle_log)
@@ -58,6 +67,8 @@ module CombatUI
     display_battle_icon(@enemies)
     display_battle_icon(@allies)
     display_stats(@allies)
+    print_line
+    display_combat_options
     print_line
   end
 end
