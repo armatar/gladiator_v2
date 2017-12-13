@@ -9,3 +9,7 @@ While we have a class for items already, we need a way for them to be used durin
 ## Decision: 
 
 Create a way to use items and integrate into the combat flow.
+
+## Progress:
+
+* Added healing items.
