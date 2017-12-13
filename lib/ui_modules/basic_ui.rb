@@ -18,10 +18,13 @@ module BasicUI
       puts "Tip! " + tip
     end
     if options
+      print "Options: ".ljust(5)
       options.each do |option|
-        puts "[" + option + "]"
+        print "[" + option + "]".ljust(5)
       end
     end
+    new_line
+    print_line
     print "> "
     answer = gets.chomp
     return answer.downcase

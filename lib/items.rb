@@ -26,7 +26,7 @@ class Items
     full_item_list.merge!(create_list_of_weapons)
     full_item_list.merge!(create_list_armor_and_shields)
     full_item_list.merge!(create_list_consumables)
-    
+
     return full_item_list
   end
 
@@ -57,7 +57,7 @@ class Items
 
   def self.create_list_consumables
     consumables = {
-      "health potion" => { name: "health potion", type: "healing", stat: "hp", bonus: 20, price: 10}
+      "health potion" => { name: "health potion", type: "healing", stat: "hp", bonus: 20, target: "any", price: 10}
     }
 
     return consumables

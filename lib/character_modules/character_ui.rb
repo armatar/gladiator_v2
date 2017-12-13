@@ -13,6 +13,14 @@ module CharacterUI
     puts Paint["BAB: ".ljust(15), :bold] + sprintf("%+d", @bab).to_s
     puts Paint["Init: ".ljust(15), :bold] + sprintf("%+d", @init).to_s
   end
+
+  def print_party_names(party)
+    print "Current Party: "
+    party.each do | member| 
+      print member.name.ljust(10)
+    end
+    new_line
+  end
 end
 
 

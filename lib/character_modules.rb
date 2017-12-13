@@ -5,4 +5,5 @@ module CharacterModules
   include CharacterCalculations
   include CharacterUI
   include CharacterCombat
+  include CharacterUseItem
 end

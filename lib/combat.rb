@@ -32,8 +32,8 @@ class Combat
         if @allies.include?(character)
           if character.controlled
             display_combat_screen
-            auto_attack_round_helper(character, @enemies)
             @battle_log = []
+            auto_attack_round_helper(character, @enemies)
           else
             auto_attack_round_helper(character, @enemies)
           end

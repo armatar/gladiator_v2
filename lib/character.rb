@@ -8,7 +8,7 @@ class Character
   include CharacterModules
   include UIModules
 
-  attr_accessor :hp, :mana, :dead
+  attr_accessor :hp, :mana, :dead, :party
   attr_reader :name, :level, :ac, :bab, :max_hp, :init, :max_mana, :controlled
   attr_reader :mag_resist, :cbm, :cbm_def, :shield_bonus, :armor_bonus, :spell_failure_chance
   attr_reader :str, :dex, :con, :mag, :cha
@@ -24,6 +24,7 @@ class Character
   end
 
   def create_character_base
+    @party = [self]
     @controlled = false
     @dead = false
     @level = 1
@@ -47,5 +48,10 @@ class Character
     @two_hand_prof = 0
     @unarmed_prof = 0
     @magic_prof = 0
+  end
+
+  def join_party(party)
+    @party.concat(party)
+    return @party
   end
 end
