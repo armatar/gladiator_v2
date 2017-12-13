@@ -50,8 +50,10 @@ class Combat
     def auto_attack_round_helper(character, target_hash)
       attack_object = character.create_attack_object(target_hash)
       @battle_log.push(attack_object[:message])
-      defense_object = target_hash[attack_object[:target]].defend(attack_object)
-      @battle_log.push(defense_object[:message])
+      if attack_object[:target]
+        defense_object = target_hash[attack_object[:target]].defend(attack_object)
+        @battle_log.push(defense_object[:message])
+      end
     end
 
     def get_order_of_play(allies, enemies)

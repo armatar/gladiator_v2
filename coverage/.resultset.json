@@ -40,6 +40,7 @@
         7,
         7,
         7,
+        7,
         null,
         null,
         1,
@@ -326,7 +327,9 @@
         1,
         0,
         0,
+        0,
         null,
+        0,
         null,
         null,
         null,
@@ -342,7 +345,7 @@
         null,
         null
       ],
-      "/Users/audra.matar/git_repos/ruby-projects/gladiator_v2/lib/character_modules/character_us_item.rb": [
+      "/Users/audra.matar/git_repos/ruby-projects/gladiator_v2/lib/character_modules/character_use_item.rb": [
         1,
         1,
         0,
@@ -408,8 +411,11 @@
         0,
         0,
         0,
+        0,
         null,
         null,
+        0,
+        0,
         0,
         0,
         0,
@@ -729,7 +735,7 @@
         null
       ]
     },
-    "timestamp": 1513101634
+    "timestamp": 1513190134
   },
   "Unknown Test Framework": {
     "coverage": {

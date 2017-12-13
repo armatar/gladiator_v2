@@ -21,6 +21,21 @@ module CharacterUI
     end
     new_line
   end
+
+  def display_inventory(inventory)
+    clear_screen
+    puts "#{@name}'s Inventory"
+    print_line
+    if @inventory == {}
+      puts "Inventory is empty."
+    else
+      inventory.each_pair do | name, item |
+        print name.ljust(15) + "Type: ".ljust(5) + item[:type]
+        new_line
+      end
+    end
+    print_line
+  end
 end
 
 

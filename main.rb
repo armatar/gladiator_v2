@@ -11,15 +11,8 @@ character6 = Character.new("Ally 3")
 
 character2.party = character1.join_party([character2])
 
-character1.hp = 2
-character2.hp = 2
+character1.inventory = {"health potion" => { name: "health potion", type: "healing", stat: "hp", bonus: 20, target: "any", price: 10}}
 
-puts "hp for #{character1.name}: #{character1.hp}"
-puts "hp for #{character2.name}: #{character2.hp}"
-character1.use_healing_item({ name: "health potion", type: "healing", stat: "hp", bonus: 20, target: "any", price: 10})
-puts "hp for #{character1.name}: #{character1.hp}"
-puts "hp for #{character2.name}: #{character2.hp}"
+combat = Combat.new(character1.party, [character3, character4])
 
-#combat = Combat.new(character1.party, [character3, character4, character5])
-
-#combat.auto_combat
+combat.auto_combat

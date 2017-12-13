@@ -3,7 +3,7 @@ module CharacterCombat
     @attack_message = ""
     target = get_random_target(possible_targets)
     msg_and_target = {target: target, message: ["#{@name} attacks #{possible_targets[target].name}!"]}
-    attack_object = auto_attack(possible_targets)
+    attack_object = auto_attack
     attack_object.merge!(msg_and_target)
     return attack_object
   end
@@ -16,7 +16,7 @@ module CharacterCombat
     return roll_result
   end
 
-  def auto_attack(possible_targets)
+  def auto_attack
     attack = []
     damage = []
     @equipped_weapon[:number_of_attacks].times do 

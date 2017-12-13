@@ -24,14 +24,14 @@ module PlayerCharacterInteractions
       when "any"
         target = select_target(@party, "Who do you want to use the #{item[:name]} on?", 
                  nil, @party.inject([]) {|names, x| names.push(x.name)})
-        @party[target].heal(item[:stat], item[:bonus])
+        return @party[target].heal(item[:stat], item[:bonus])
       when "ally"
         party_without_player = @party.shift
         target = select_target(party_without_player, "Who do you want to use the #{item[:name]} on?", 
                  party_without_player.inject([]) {|names, x| names.push(x.name)})
-        party_without_player[target].heal(item[:stat], item[:bonus])
+        return party_without_player[target].heal(item[:stat], item[:bonus])
       when "self"
-        heal(item[:stat], item[:bonus])
+        return heal(item[:stat], item[:bonus])
     end
   end
 end

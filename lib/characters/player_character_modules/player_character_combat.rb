@@ -1,9 +1,6 @@
 module PlayerCharacterCombat
   def create_attack_object(enemies)
-    target = select_target(enemies, "Select a target for #{@name} to attack.", "Enter the name of the enemy to select it.")
-    msg_and_target = {target: target, message: ["#{@name} attacks #{enemies[target].name}!"]}
     attack_object = select_action(enemies)
-    attack_object.merge!(msg_and_target)
     return attack_object
   end
 
@@ -13,16 +10,35 @@ module PlayerCharacterCombat
       answer = ask_question("What action do you wish for #{@name} to take?", "Select the number from combat options.")
       case answer
         when "1"
-          return auto_attack(enemies)
+          target = select_target(enemies, "Select a target for #{@name} to attack.", "Enter the name of the enemy to select it.")
+          attack_object = {target: target, message: ["#{@name} attacks #{enemies[target].name}!"]}
+          attack_object.merge!(auto_attack)
+          return attack_object
         when "2"
           print_error_message("Option currently unavailble. Try again.")
         when "3"
           print_error_message("Option currently unavailble. Try again.")
         when "4"
-          print_error_message("Option currently unavailble. Try again.")
+          return get_item_to_use
         else
           print_error_message("Invalid option. Try again.")
       end
     end
+  end
+
+  def get_item_to_use
+    display_inventory(@inventory)
+    item = ""
+    while true
+      item = ask_question("Which item do you want to use?")
+      if @inventory[item]
+        break
+      else
+        print_error_message("#{item.capitalize} is not an item you have. Try again.")
+      end
+    end
+    message = ["#{@name} used a #{item}!"]
+    message.push(use_item(@inventory[item]))
+    return {message: message}
   end
 end
