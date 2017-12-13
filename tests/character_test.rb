@@ -1,10 +1,10 @@
 require_relative '../test_helper.rb'
-require_relative "../lib/character.rb"
+require_relative "../lib/characters/test_character.rb"
 require 'byebug'
 
 class CharacterTest < MiniTest::Test
 
-  @character = Character.new("Test Character")
+  @character = TestCharacter.new("Test Character")
 
   should_not_be_nil = {"name" => @character.name, "level" => @character.level, "ac" => @character.ac, "bab" => @character.bab, "init" => @character.init,
                        "hp" => @character.hp, "max_hp" => @character.max_hp, "str" => @character.str, "dex" => @character.dex, 
@@ -45,5 +45,4 @@ class CharacterTest < MiniTest::Test
       refute_nil(attribute)
     end
   end
-
 end
