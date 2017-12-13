@@ -57,7 +57,10 @@ class Items
 
   def self.create_list_consumables
     consumables = {
-      "health potion" => { name: "health potion", type: "healing", stat: "hp", bonus: 20, target: "any", price: 10}
+      "small health potion" => { name: "small health potion", type: "healing", stat: "hp", bonus: 10, target: "any", price: 10},
+      "large health potion" => { name: "large health potion", type: "healing", stat: "hp", bonus: 30, target: "any", price: 30},
+      "small mana potion" => { name: "small mana potion", type: "healing", stat: "mana", bonus: 20, target: "any", price: 10},
+      "large mana potion" => { name: "large mana potion", type: "healing", stat: "mana", bonus: 50, target: "any", price: 30}
     }
 
     return consumables
