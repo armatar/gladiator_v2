@@ -1,10 +1,9 @@
 source 'https://rubygems.org' do
   gem 'byebug'
+  gem 'coveralls', require: false
   gem 'minitest'
-  gem 'rake'
   gem 'paint'
+  gem 'rake'
   gem 'require_all'
   gem 'simplecov'
-  gem 'coveralls', require: false
 end
-
