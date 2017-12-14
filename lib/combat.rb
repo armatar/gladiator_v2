@@ -1,6 +1,10 @@
 require_relative 'combat_modules.rb'
 require_relative 'ui_modules.rb'
 
+# Combat class is the mediator between combatants.
+# You send in whomever you want to fight in an instance
+# of combat and combat ensures that everyone gets a turn
+# and that the fighting continues until that is complete.
 class Combat
   include CombatModules
   include UIModules
@@ -14,84 +18,75 @@ class Combat
     @order_of_play = get_order_of_play(@allies, @enemies)
   end
 
-  def auto_combat
+  def fight
     continue_combat = true
-
-    while continue_combat
-      continue_combat = auto_attack_round
-    end
+    continue_combat = auto_attack_round while continue_combat
     display_battle_log(@battle_log)
   end
 
   def auto_attack_round
-    @order_of_play.each do | character |
-      if combat_over?
-        return false
-      end
-      if !character.dead
-        if @allies.include?(character)
-          if character.controlled
-            display_combat_screen
-            @battle_log = []
-            auto_attack_round_helper(character, @enemies)
-          else
-            auto_attack_round_helper(character, @enemies)
-          end
-        else
-          auto_attack_round_helper(character, @allies)
-        end
-      end
+    @order_of_play.each do |character|
+      return false if combat_over?
+      implement_auto_attack(character) unless character.dead
     end
-    return true
+    true
   end
 
   private
 
-    def auto_attack_round_helper(character, target_hash)
-      attack_object = character.create_attack_object(target_hash)
-      @battle_log.push(attack_object[:message])
-      if attack_object[:target]
-        defense_object = target_hash[attack_object[:target]].defend(attack_object)
-        @battle_log.push(defense_object[:message])
+  def implement_auto_attack(character)
+    if @allies.include?(character)
+      if character.controlled
+        display_combat_screen
+        @battle_log = []
       end
+      auto_attack_round_helper(character, @enemies)
+    else
+      auto_attack_round_helper(character, @allies)
     end
+  end
 
-    def get_order_of_play(allies, enemies)
-      order_of_play = []
-      allies.each do |ally|
-        order_of_play.push(ally)
-      end
-      enemies.each do |enemy|
-        order_of_play.push(enemy)
-      end
-      order_of_play.sort_by! do | character |
-        character.init
-      end
-      order_of_play.reverse!
-      return order_of_play
-    end
+  def auto_attack_round_helper(character, target_hash)
+    attack_object = character.create_attack_object(target_hash)
+    @battle_log.push(attack_object[:message])
+    return unless attack_object[:target]
+    defense_object = target_hash[attack_object[:target]].defend(attack_object)
+    @battle_log.push(defense_object[:message])
+  end
 
-    def combat_over?
-      all_allies_dead = true
-      all_enemies_dead = true
-      @allies.each do |ally|
-        if !ally.dead
-          all_allies_dead = false
-        end
-      end
-      @enemies.each do |enemy|
-        if !enemy.dead
-          all_enemies_dead = false
-        end
-      end
-      if all_allies_dead
-        @battle_log.push("All allies have died! Enemies win!")
-        return true
-      elsif all_enemies_dead
-        @battle_log.push("All enemies have died! Allies win!")
-        return true
-      else
-        return false
-      end
+  def get_order_of_play(allies, enemies)
+    order_of_play = []
+    allies.each do |ally|
+      order_of_play.push(ally)
     end
+    enemies.each do |enemy|
+      order_of_play.push(enemy)
+    end
+    order_of_play.sort_by!(&:init)
+    order_of_play.reverse!
+  end
+
+  def combat_over?
+    all_allies_dead = true
+    all_enemies_dead = true
+    @allies.each do |ally|
+      all_allies_dead = false unless ally.dead
+    end
+    @enemies.each do |enemy|
+      all_enemies_dead = false unless enemy.dead
+    end
+    combat_response(all_allies_dead, all_enemies_dead)
+  end
+
+  def combat_response(all_allies_dead, all_enemies_dead)
+    if all_allies_dead
+      @battle_log.push('All allies have died! Enemies win!')
+      true
+    elsif all_enemies_dead
+      @battle_log.push('All enemies have died! Allies win!')
+      true
+    else
+      false
+    end
+  end
 end

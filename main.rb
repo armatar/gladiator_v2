@@ -15,4 +15,4 @@ character1.inventory = {"health potion" => { name: "health potion", type: "heali
 
 combat = Combat.new(character1.party, [character3, character4])
 
-combat.auto_combat
+combat.fight

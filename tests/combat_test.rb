@@ -26,7 +26,7 @@ class CombatTest < MiniTest::Test
 
   scenarios_to_test.each_pair do |name, attributes|                  
       define_method("test_combat_completes_when_#{name}") do
-      capture_stdout {attributes[0].auto_combat}
+      capture_stdout {attributes[0].fight}
       assert(attributes[0].battle_log.include?(attributes[1]))
     end
   end
