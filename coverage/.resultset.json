@@ -429,6 +429,8 @@
         1,
         1,
         null,
+        null,
+        null,
         1,
         1,
         null
@@ -477,9 +479,12 @@
         null
       ],
       "/Users/audra.matar/git_repos/ruby-projects/gladiator_v2/lib/items.rb": [
-        1,
+        null,
+        null,
         null,
         1,
+        1,
+        null,
         null,
         8,
         null,
@@ -816,7 +821,7 @@
         null
       ]
     },
-    "timestamp": 1513270854
+    "timestamp": 1513271317
   },
   "Unknown Test Framework": {
     "coverage": {
