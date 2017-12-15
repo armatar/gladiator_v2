@@ -20,7 +20,7 @@ class PlayerCharacterUseItemTest < MiniTest::Test
         pc.max_hp = 100
         pc.hp = 1
         result = 1 + item[:bonus]
-        capture_stdout { pc.get_item_to_use }
+        capture_stdout { pc.choose_item_to_use }
         assert_equal(result, pc.hp)
       end
     end

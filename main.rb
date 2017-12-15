@@ -10,6 +10,7 @@ character4 = Character.new('Enemy 2')
 # character6 = Character.new('Ally 3')
 
 character2.party = character1.join_party([character2])
+character2.print_character_sheet
 
 character1.inventory = { 'health potion' => { name: 'health potion',
                                               type: 'healing',

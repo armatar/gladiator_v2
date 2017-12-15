@@ -1,20 +1,23 @@
 # A module to give player character specific options
 # for using items.
 module PlayerCharacterUseItem
-  def get_item_to_use
+  def choose_item_to_use
     display_inventory(@inventory)
-    item = ""
-    while true
-      item = ask_question("Which item do you want to use?")
+    item = ''
+    loop do
+      item = ask_question('Which item do you want to use?',
+                          'Type "back" to return')
       if @inventory[item]
         break
+      elsif item == 'back'
+        return false
       else
-        print_error_message("#{item.capitalize} is not an item you have. Try again.")
+        print_error_message("#{item.capitalize} is not an item you have.")
       end
     end
     message = ["#{@name} used a #{item}!"]
     message.push(use_item(@inventory[item]))
-    return {message: message}
+    { message: message }
   end
 
   def use_healing_item(item)
@@ -32,7 +35,7 @@ module PlayerCharacterUseItem
 
   def party_use_item(item, party, question)
     options = party.inject([]) { |names, x| names.push(x.name) }
-    target = select_target(party, question, nil, options)
-    party[target].heal(item[:stat], item[:bonus])
+    attack_object = select_target(party, question, nil, options)
+    party[attack_object[:target]].heal(item[:stat], item[:bonus])
   end
 end
