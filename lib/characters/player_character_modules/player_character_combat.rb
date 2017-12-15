@@ -25,20 +25,4 @@ module PlayerCharacterCombat
       end
     end
   end
-
-  def get_item_to_use
-    display_inventory(@inventory)
-    item = ""
-    while true
-      item = ask_question("Which item do you want to use?")
-      if @inventory[item]
-        break
-      else
-        print_error_message("#{item.capitalize} is not an item you have. Try again.")
-      end
-    end
-    message = ["#{@name} used a #{item}!"]
-    message.push(use_item(@inventory[item]))
-    return {message: message}
-  end
 end

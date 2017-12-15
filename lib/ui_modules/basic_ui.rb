@@ -1,33 +1,37 @@
+# This module is specifically to add basic
+# UI functionality to the program that
+# any other UI would universially need.
 module BasicUI
   def print_line
-    puts "-" * 50
+    puts '-' * 50
   end
 
   def clear_screen
-    system "clear"
+    system 'clear'
   end
 
   def new_line
     puts "\n"
   end
 
-  def ask_question(question, tip=nil, options=nil)
+  def ask_question(question, tip = nil, options = nil)
     puts question
     print_line
-    if tip
-      puts "Tip! " + tip
-    end
+    puts 'Tip! ' + tip if tip
     if options
-      print "Options: ".ljust(5)
+      print 'Options: '.ljust(5)
       options.each do |option|
-        print "[" + option + "]".ljust(5)
+        print '[' + option + ']'.ljust(5)
       end
     end
+    prompt_answer
+  end
+
+  def prompt_answer
     new_line
     print_line
-    print "> "
-    answer = gets.chomp
-    return answer.downcase
+    print '> '
+    gets.chomp.downcase
   end
 
   def print_error_message(message)
@@ -35,7 +39,7 @@ module BasicUI
   end
 
   def pause
-    puts "Press [enter] to continue..."
+    puts 'Press [enter] to continue...'
     gets.chomp
   end
 end
