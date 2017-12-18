@@ -1,6 +1,6 @@
 # Create Castable Spells
 
-### Status: proposed
+### Status: accepted
 
 ## Context: 
 
