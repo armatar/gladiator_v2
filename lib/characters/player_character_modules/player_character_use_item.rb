@@ -35,7 +35,7 @@ module PlayerCharacterUseItem
 
   def party_use_item(item, party, question)
     options = party.inject([]) { |names, x| names.push(x.name) }
-    attack_object = select_target(party, question, nil, options)
-    party[attack_object[:target]].heal(item[:stat], item[:bonus])
+    target = select_target(party, question, nil, options)
+    party[target].heal(item[:stat], item[:bonus])
   end
 end

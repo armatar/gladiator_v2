@@ -39,14 +39,14 @@ class Spells
       'burning hands' => { name: 'burning hands', level: 1, type: 'damage',
                            dice: 4, number_of_dice: 1, damage_bonus: false,
                            number_of_dice_bonus: 'proficiency',
-                           bonus_missles: false, casting_cost: 10,
-                           cost_pool: 'mana', price: 100,
+                           bonus_missles: false, target: 'all',
+                           casting_cost: 10, cost_pool: 'mana', price: 100,
                            description: 'You touch your opponent with hands of flame. \nDeals 1d6 damage per magic proficiency point.' },
       'magic missle' => { name: 'magic missle', level: 1, type: 'damage',
                           dice: 4, number_of_dice: 1, damage_bonus: 'magic',
                           number_of_dice_bonus: 'level',
-                          bonus_missles: 'proficiency', casting_cost: 15,
-                          cost_pool: 'mana', price: 150,
+                          bonus_missles: 'proficiency', target: 'enemy',
+                          casting_cost: 15, cost_pool: 'mana', price: 150,
                           description: 'Missles shoot from your fingers toward your opponent. \nDeals 1d4 + cha modifier damage per level.' } 
     }
   end

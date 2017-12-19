@@ -3,6 +3,7 @@ require 'paint'
 require_relative 'character_modules.rb'
 require_relative 'ui_modules.rb'
 require_relative 'items.rb'
+require_relative 'spells.rb'
 
 # Character class is the basis of all combatable characters in the game.
 # This contains all of the shared attributes between the different
@@ -14,7 +15,7 @@ class Character
   include CharacterModules
   include UIModules
 
-  attr_accessor :hp, :mana, :dead, :party, :inventory
+  attr_accessor :hp, :mana, :dead, :party, :inventory, :known_spells
   attr_reader :name, :level, :ac, :bab, :max_hp, :init, :max_mana, :controlled
   attr_reader :mag_resist, :cbm, :cbm_def, :shield_bonus, :armor_bonus
   attr_reader :spell_failure_chance, :str, :dex, :con, :mag, :cha
@@ -33,6 +34,7 @@ class Character
 
   def create_character_base
     @inventory = {}
+    @known_spells = {}
     @party = [self]
     @controlled = false
     @dead = false

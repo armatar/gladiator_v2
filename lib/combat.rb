@@ -50,7 +50,7 @@ class Combat
     attack_object = character.create_attack_object(target_hash)
     @battle_log.push(attack_object[:message])
     return unless attack_object[:target]
-    defense_object = target_hash[attack_object[:target]].defend(attack_object)
+    defense_object = target_hash[attack_object[:target]].decode_attack_object(attack_object)
     @battle_log.push(defense_object[:message])
   end
 

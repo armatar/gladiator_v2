@@ -25,11 +25,25 @@ module CharacterUI
   def display_inventory(inventory)
     puts "#{@name}'s Inventory"
     print_line
-    if @inventory == {}
+    if inventory == {}
       puts 'Inventory is empty.'
     else
       inventory.each_pair do |name, item|
         print name.ljust(15) + 'Type: '.ljust(5) + item[:type]
+        new_line
+      end
+    end
+    print_line
+  end
+
+  def display_known_spells(spells)
+    puts "#{@name}'s Known Spells"
+    print_line
+    if spells == {}
+      puts 'No spells known.'
+    else
+      spells.each_pair do |name, spell|
+        print name.ljust(15) + spell[:description]
         new_line
       end
     end

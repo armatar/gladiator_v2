@@ -7,4 +7,5 @@ module PlayerCharacterModules
   include PlayerCharacterCombat
   include PlayerCharacterInteractions
   include PlayerCharacterUseItem
+  include PlayerCharacterCastSpell
 end

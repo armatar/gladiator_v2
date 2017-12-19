@@ -1,6 +1,7 @@
 require_relative 'lib/character.rb'
 require_relative 'lib/characters/player_character.rb'
 require_relative 'lib/combat.rb'
+require_relative 'lib/spells.rb'
 
 character1 = PlayerCharacter.new('PC')
 character2 = PlayerCharacter.new('Ally 1')
@@ -18,6 +19,8 @@ character1.inventory = { 'health potion' => { name: 'health potion',
                                               bonus: 20,
                                               target: 'any',
                                               price: 10 } }
+character1.known_spells.merge!(Spells.damage_spells)
+character2.known_spells.merge!(Spells.damage_spells)
 
 combat = Combat.new(character1.party, [character3, character4])
 

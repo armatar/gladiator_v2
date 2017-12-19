@@ -8,4 +8,6 @@ module CharacterModules
   include CharacterUI
   include CharacterCombat
   include CharacterUseItem
+  include CharacterCastSpell
+  include CastDamageSpell
 end

@@ -16,6 +16,6 @@ module PlayerCharacterInteractions
       answer = ask_question(prompt, tip, options)
       valid_target = valid_target?(valid_targets, answer)
     end
-    { target: valid_target }
+    valid_target
   end
 end
