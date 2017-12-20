@@ -29,7 +29,7 @@ module PlayerCharacterCombat
         response = choose_item_to_use
         return response if response
       else
-        print_error_message('Invalid option. Try again.')
+        print_error_message("Invalid option '#{answer}' . Try again.")
       end
     end
   end
