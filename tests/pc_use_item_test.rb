@@ -3,7 +3,7 @@ require_relative '../test_helper.rb'
 require_relative '../lib/characters/player_characters/test_player_character.rb'
 
 # A test for player character item use.
-class PlayerCharacterUseItemTest < MiniTest::Test
+class PCUseItemTest < MiniTest::Test
   pc = TestPlayerCharacter.new('Test')
   healing_item1 = { name: 'small_health_potion', type: 'healing', stat: 'hp',
                     bonus: 1, target: 'any', price: 10 }
