@@ -17,18 +17,15 @@ module CharacterCastSpell
   end
 
   def cast_damage_spell(spell, enemies)
-    # get target for spell
-    # get full damage for spell
-    # magic attacks can be resisted by a roll by the receiver
-    # so attack object should just contain the spell dc
-    # and the damage as well as a message for the battle log.
-    target = if spell[:target] == 'all'
-               'all'
-             else
-               get_random_target(enemies)
-             end
+    target = ''
+    if spell[:target] == 'all'
+      target = 'all'
+      message = ["#{@name} attacks all targets with #{spell[:name]}!"]
+    else
+      target = get_random_target(enemies)
+      message = ["#{@name} attacks #{enemies[target].name} with #{spell[:name]}!"]
+    end
     damage = get_spell_damage(spell)
-    message = ["#{@name} attacks #{enemies[target].name} with #{spell[:name]}!"]
     { target: target, damage: damage, message: message }
   end
 

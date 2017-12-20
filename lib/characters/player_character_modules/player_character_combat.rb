@@ -12,9 +12,8 @@ module PlayerCharacterCombat
                             'Select the number from combat options.')
       case answer
       when '1'
-        target = select_target(enemies,
-                                      "Select a target for #{@name} to attack.",
-                                      'Enter the name of the enemy to target.')
+        target = select_target(enemies, "Select a target for #{@name} to attack.",
+                               'Enter the name of the enemy to target.')
         attack_object[:target] = target
         attack_object[:message] = ["#{@name} attacks #{enemies[target].name}!"]
         attack_object[:attack_type] = 'auto attack'
