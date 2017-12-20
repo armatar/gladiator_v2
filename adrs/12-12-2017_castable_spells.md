@@ -9,3 +9,7 @@ Want to give more variation to the combat system beyond physical attacks. This w
 ## Decision: 
 
 Create spells and integrate them into the character and combat systems.
+
+## Progress:
+
+* Damage spells, both aoe and single target added

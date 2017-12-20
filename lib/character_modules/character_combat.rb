@@ -2,7 +2,7 @@ module CharacterCombat
   def create_attack_object(possible_targets)
     @attack_message = ''
     target = get_random_target(possible_targets)
-    msg_and_target = { target: target, attack_type: 'auto attack',
+    msg_and_target = { target: target,
                        message: ["#{@name} attacks #{possible_targets[target].name}!"] }
     attack_object = auto_attack
     attack_object.merge!(msg_and_target)
@@ -23,7 +23,7 @@ module CharacterCombat
       attack.push(roll_dice(20, 1) + @attack)
       damage.push(roll_dice(6, 1) + @damage)
     end
-    { attack: attack, damage: damage }
+    { attack: attack, damage: damage, attack_type: 'auto attack' }
   end
 
   def decode_attack_object(attack_object)

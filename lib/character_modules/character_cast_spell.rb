@@ -13,11 +13,29 @@ module CharacterCastSpell
       attack_object[:spell_dc] = get_spell_dc(spell[:level])
       attack_object[:attack_type] = 'spell'
       attack_object
+    when 'healing'
+      return cast_healing_spell(spell)
+    end
+  end
+
+  def cast_healing_spell(spell)
+    message = []
+    if spell[:target] == 'all'
+    elsif spell[:target] == 'ally'
+    elsif spell[:target] == 'self'
+    elsif spell[:target] == 'any'
+      target = get_random_target(@party)
+      message.push("#{@name} heals #{@party[target].name} with #{spell[:name]}!")
+      attack_object = @party[target].get_healing(spell)
+      return false unless attack_object
+      attack_object[:message].unshift(message)
+      return attack_object
     end
   end
 
   def cast_damage_spell(spell, enemies)
     target = ''
+    message = []
     if spell[:target] == 'all'
       target = 'all'
       message = ["#{@name} attacks all targets with #{spell[:name]}!"]

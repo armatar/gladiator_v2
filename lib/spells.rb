@@ -53,7 +53,7 @@ class Spells
 
   def self.create_healing_spells
     @healing_spells = {
-      'cure light wounds' => { name: 'cure light wounds', level: 1,
+      'cure light wounds' => { name: 'cure light wounds', level: 1, target: 'any',
                                type: 'healing', attribute: 'hp', dice: 8,
                                number_of_dice: 1, healing_bonus: 'proficiency',
                                number_of_dice_bonus: false, casting_cost: 20,

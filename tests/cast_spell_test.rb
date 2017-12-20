@@ -7,20 +7,30 @@ class CastSpellTest < MiniTest::Test
   character = TestCharacter.new('Test')
   spell = Spells.damage_spells['magic missle']
   spell2 = Spells.damage_spells['burning hands']
-  should_not_be_nil = { 'target' => :target, 'damage' => :damage,
-                        'attack type' => :attack_type,
-                        'spell dc' => :spell_dc }
+  spell3 = Spells.healing_spells['cure light wounds']
+  dmg_should_not_be_nil = { 'target' => :target, 'damage' => :damage,
+                            'attack type' => :attack_type,
+                            'spell dc' => :spell_dc }
 
-  should_not_be_nil.each do |name, attribute|
+  dmg_should_not_be_nil.each do |name, attribute|
     define_method("test_that_#{name}_is_not_nil_with_single_target") do
       attack_object = character.cast_spell(spell, [character])
       refute_nil(attack_object[attribute])
     end
   end
 
-  should_not_be_nil.each do |name, attribute|
+  dmg_should_not_be_nil.each do |name, attribute|
     define_method("test_that_#{name}_is_not_nil_with_target_all") do
       attack_object = character.cast_spell(spell2, [character])
+      refute_nil(attack_object[attribute])
+    end
+  end
+
+  heal_should_not_be_nil = { 'healing' => :healing, 'message' => :message }
+
+  heal_should_not_be_nil.each do |name, attribute|
+    define_method("test_that_#{name}_is_not_nil_with_healing_any") do
+      attack_object = character.cast_spell(spell3, [character])
       refute_nil(attack_object[attribute])
     end
   end

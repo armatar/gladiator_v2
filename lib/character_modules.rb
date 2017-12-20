@@ -10,4 +10,5 @@ module CharacterModules
   include CharacterUseItem
   include CharacterCastSpell
   include CastDamageSpell
+  include CastHealingSpell
 end
