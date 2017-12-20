@@ -50,23 +50,4 @@ class CharacterTest < MiniTest::Test
       refute_nil(attribute)
     end
   end
-
-  atk_obj = { 'atk roll' => @character.create_attack_object([@character])[:attack],
-              'damage' => @character.create_attack_object([@character])[:damage],
-              'target' => @character.create_attack_object([@character])[:target],
-              'message' => @character.create_attack_object([@character])[:message] }
-
-  atk_obj.each_pair do |name, attribute|
-    define_method("test_#{name}_exists_in_attack_object") do
-      refute_nil(attribute)
-    end
-  end
-  test_attack_object = { attack: [1], damage: [1], attack_type: 'auto attack' }
-  defence_obj = { 'message' => @character.decode_attack_object(test_attack_object)[:message] }
-
-  defence_obj.each_pair do |name, attribute|
-    define_method("test_#{name}_exists_in_defence_object") do
-      refute_nil(attribute)
-    end
-  end
 end
