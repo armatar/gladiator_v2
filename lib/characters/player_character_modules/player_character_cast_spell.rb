@@ -10,13 +10,15 @@ module PlayerCharacterCastSpell
   end
 
   def cast_damage_spell(spell, enemies)
-    target = if spell[:target] == 'all'
-               'all'
-             else
-               select_target(enemies, 'Which enemy do you want to attack?')
-             end
+    target = ''
+    if spell[:target] == 'all'
+      target = 'all'
+      message = ["#{@name} attacks all enemies with #{spell[:name]}!"]
+    else
+      target = select_target(enemies, 'Which enemy do you want to attack?')
+      message = ["#{@name} attacks #{enemies[target].name} with #{spell[:name]}!"]
+    end
     damage = get_spell_damage(spell)
-    message = ["#{@name} attacks #{enemies[target].name} with #{spell[:name]}!"]
     { target: target, damage: damage, message: message }
   end
 end

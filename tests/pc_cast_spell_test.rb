@@ -5,9 +5,9 @@ require 'byebug'
 
 # Testing casting spells in combat for player characters
 class PCCastSpellTest < MiniTest::Test
-    character = TestPlayerCharacter.new('Test')
-    spell = Spells.damage_spells['magic missle']
-    character.known_spells['magic missle'] = spell
+  character = TestPlayerCharacter.new('Test')
+  spell = Spells.damage_spells['magic missle']
+  character.known_spells['magic missle'] = spell
 
   should_not_be_nil = { 'target' => :target, 'damage' => :damage,
                         'attack type' => :attack_type, 'spell dc' => :spell_dc }

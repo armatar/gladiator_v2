@@ -46,12 +46,27 @@ class Combat
     end
   end
 
-  def auto_attack_round_helper(character, target_hash)
-    attack_object = character.create_attack_object(target_hash)
+  def auto_attack_round_helper(character, target_array)
+    attack_object = character.create_attack_object(target_array)
     @battle_log.push(attack_object[:message])
     return unless attack_object[:target]
-    defense_object = target_hash[attack_object[:target]].decode_attack_object(attack_object)
+    defense_object = coordinate_defence(attack_object, target_array)
     @battle_log.push(defense_object[:message])
+  end
+
+  def coordinate_defence(attack_object, target_array)
+    message = []
+    defense_object = {}
+    if attack_object[:target] == 'all'
+      target_array.each do |target|
+        defense_object.merge!(target.decode_attack_object(attack_object))
+        message.push(defense_object[:message])
+      end
+      defense_object[:message] = message
+      return defense_object
+    else
+      return target_array[attack_object[:target]].decode_attack_object(attack_object)
+    end
   end
 
   def get_order_of_play(allies, enemies)

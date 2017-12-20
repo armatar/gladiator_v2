@@ -6,6 +6,7 @@ module PlayerCharacterCombat
   end
 
   def select_action(enemies)
+    attack_object = {}
     loop do
       answer = ask_question("What action do you wish for #{@name} to take?",
                             'Select the number from combat options.')
