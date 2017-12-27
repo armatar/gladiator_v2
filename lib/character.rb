@@ -39,13 +39,14 @@ class Character
     @controlled = false
     @dead = false
     @level = 1
-    set_base_attributes(8, 8, 8, 8, 8)
+    set_base_attributes
+    set_base_prof_points
     set_base_stats
     calculate_initial_stats
     @init = rand(1..5)
   end
 
-  def set_base_attributes(str, dex, con, mag, cha)
+  def set_base_attributes(str = 8, dex = 8, con = 8, mag = 8, cha = 8)
     @str = str
     @dex = dex
     @con = con
@@ -53,16 +54,19 @@ class Character
     @cha = cha
   end
 
+  def set_base_prof_points(one_hand = 0, dual_wield = 0, two_hand = 0, unarmed = 0, magic = 0)
+    @one_hand_prof = one_hand
+    @dual_wield_prof = dual_wield
+    @two_hand_prof = two_hand
+    @unarmed_prof = unarmed
+    @magic_prof = magic
+  end
+
   def set_base_stats
     @equipped_weapon = Items.default_weapon
     @shield_bonus = 0
     @armor_bonus = 0
     @spell_failure_chance = 0
-    @one_hand_prof = 0
-    @dual_wield_prof = 0
-    @two_hand_prof = 0
-    @unarmed_prof = 0
-    @magic_prof = 0
   end
 
   def join_party(party)

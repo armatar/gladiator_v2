@@ -18,6 +18,12 @@ module CharacterUI
     puts Paint['Con: '.ljust(15), :bold] + @con.to_s.ljust(15) + format('%+d', @con_modifier).to_s
     puts Paint['Mag: '.ljust(15), :bold] + @mag.to_s.ljust(15) + format('%+d', @mag_modifier).to_s
     puts Paint['Cha: '.ljust(15), :bold] + @cha.to_s.ljust(15) + format('%+d', @cha_modifier).to_s
+    print_line
+    puts Paint['One Handed: '.ljust(15), :bold] + @one_hand_prof.to_s.ljust(15)
+    puts Paint['Dual Wield: '.ljust(15), :bold] + @dual_wield_prof.to_s.ljust(15)
+    puts Paint['Two Handed: '.ljust(15), :bold] + @two_hand_prof.to_s.ljust(15)
+    puts Paint['Unarmed: '.ljust(15), :bold] + @unarmed_prof.to_s.ljust(15)
+    puts Paint['Magic: '.ljust(15), :bold] + @magic_prof.to_s.ljust(15)
   end
 
   def print_party_names(party)

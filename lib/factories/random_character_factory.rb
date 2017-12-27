@@ -2,10 +2,16 @@
 class RandomCharacterFactory
   def self.randomize(character, level)
     @random_character = character
-    max_hash = get_stat_max('magic', 'magic')
+    skills = assign_skills
+    max_hash = get_stat_max(skills[:primary], skills[:secondary])
     att_hash = randomize_attributes(20, max_hash)
     @random_character.set_base_attributes(att_hash[:str], att_hash[:dex], att_hash[:con],
                                           att_hash[:mag], att_hash[:cha])
+    weighted_array = create_weighted_random_array(skills[:primary], skills[:secondary])
+    prof_hash = set_proficiency_points(weighted_array, 2)
+    @random_character.set_base_prof_points(prof_hash[:one_hand], prof_hash[:dual_wield],
+                                           prof_hash[:two_hand], prof_hash[:unarmed],
+                                           prof_hash[:magic])
     @random_character.calculate_initial_stats
     @random_character
   end
@@ -80,5 +86,48 @@ class RandomCharacterFactory
       max_hash[:cha_max] = 99
     end
     max_hash
+  end
+
+  def self.assign_skills
+    primary_skill = get_random_skill(get_random_number(1, 5))
+    secondary_skill = get_random_skill(get_random_number(1, 5))
+    { primary: primary_skill, secondary: secondary_skill }
+  end
+
+  def self.create_weighted_random_array(primary_skill, secondary_skill)
+    [primary_skill, primary_skill, primary_skill, secondary_skill]
+  end
+
+  def self.set_proficiency_points(weighted_random_array, proficiency_points)
+    prof_hash = { one_hand: 0, dual_wield: 0, two_hand: 0, magic: 0, unarmed: 0 }
+    proficiency_points.times do
+      case weighted_random_array.sample
+      when '1-hand weapon'
+        prof_hash[:one_hand] += 1
+      when 'dual wield weapon'
+        prof_hash[:dual_wield] += 1
+      when '2-hand weapon'
+        prof_hash[:two_hand] += 1
+      when 'magic'
+        prof_hash[:magic] += 1
+      when 'unarmed weapon'
+        prof_hash[:unarmed] += 1
+      end
+    end
+    prof_hash
+  end
+
+  def self.get_random_skill(random_number)
+    if random_number == 1
+      '1-hand weapon'
+    elsif random_number == 2
+      'dual wield weapon'
+    elsif random_number == 3
+      '2-hand weapon'
+    elsif random_number == 4
+      'magic'
+    elsif random_number == 5
+      'unarmed weapon'
+    end
   end
 end
