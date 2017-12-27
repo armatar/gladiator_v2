@@ -41,7 +41,7 @@ module CharacterCombat
       message.push("#{@name} resisted the spell!")
     else
       message.push("#{@name} fails to resist the spell!")
-      message = take_damage(attack_object[:damage])
+      message.push(take_damage(attack_object[:damage]))
     end
     { message: message }
   end
@@ -50,7 +50,7 @@ module CharacterCombat
     message = []
     attack_object[:attack].each_with_index do |attack, index|
       if attack >= @ac
-        message = take_damage(attack_object[:damage][index])
+        message.push(take_damage(attack_object[:damage][index]))
       else
         message.push('Miss!')
       end

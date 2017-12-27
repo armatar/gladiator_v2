@@ -6,7 +6,7 @@ module CharacterCastSpell
     false
   end
 
-  def cast_spell(spell, enemies)
+  def cast_spell(spell, enemies, party)
     case spell[:type]
     when 'damage'
       attack_object = cast_damage_spell(spell, enemies)
@@ -14,26 +14,26 @@ module CharacterCastSpell
       attack_object[:attack_type] = 'spell'
       attack_object
     when 'healing'
-      return cast_healing_spell(spell)
+      cast_healing_spell(spell, party)
     end
   end
 
-  def cast_healing_spell(spell)
+  def cast_healing_spell(spell, party)
     message = []
     if spell[:target] == 'all'
-      @party.each do |member|
-        message.push(cast_healing_helper(member), spell)
+      party.each do |member|
+        message.push(cast_healing_helper(member, spell))
       end
     elsif spell[:target] == 'ally'
-      without_player = @party.dup
+      without_player = party.dup
       without_player.shift
       target = get_random_target(without_player)
       message = cast_healing_helper(without_player[target], spell)
     elsif spell[:target] == 'self'
       message = cast_healing_helper(self, spell)
     elsif spell[:target] == 'any'
-      target = get_random_target(@party)
-      message = cast_healing_helper(@party[target], spell)
+      target = get_random_target(party)
+      message = cast_healing_helper(party[target], spell)
     end
     return false unless message
     { message: message }
@@ -70,6 +70,8 @@ module CharacterCastSpell
       @mag_modifier
     elsif bonus_to_get == 'charisma'
       @cha_modifier
+    elsif bonus_to_get.is_a? Integer
+      bonus_to_get
     elsif bonus_to_get == false
       0
     end

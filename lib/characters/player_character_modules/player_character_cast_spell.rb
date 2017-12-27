@@ -7,7 +7,7 @@ module PlayerCharacterCastSpell
       return false if spell_name == 'back'
       puts spell_name
       spell = check_if_valid_spell(spell_name)
-      attack_object = cast_spell(spell, enemies)
+      attack_object = cast_spell(spell, enemies, @party)
       return attack_object if attack_object
     end
   end
@@ -25,18 +25,24 @@ module PlayerCharacterCastSpell
     { target: target, damage: damage, message: message }
   end
 
-  def cast_healing_spell(spell)
+  def cast_healing_spell(spell, party)
     message = []
     if spell[:target] == 'all'
+      party.each do |member|
+        message.push(cast_healing_helper(member, spell))
+      end
     elsif spell[:target] == 'ally'
+      without_player = party.dup
+      without_player.shift
+      target = select_target(without_player, 'Who do you want to heal?', nil,
+                             without_player.inject([]) { |array, member| array.push(member.name) })
+      message = cast_healing_helper(without_player[target], spell)
     elsif spell[:target] == 'self'
       message = cast_healing_helper(self, spell)
     elsif spell[:target] == 'any'
-      target = select_target(@party, 'Who do you want to heal?', nil,
-                             @party.inject([]) { |array, member| array.push(member.name) })
-      puts target
-      message = cast_healing_helper(@party[target], spell) 
-      puts "message: #{message.inspect}"
+      target = select_target(party, 'Who do you want to heal?', nil,
+                             party.inject([]) { |array, member| array.push(member.name) })
+      cast_healing_helper(party[target], spell)
     end
     return false unless message
     { message: message }

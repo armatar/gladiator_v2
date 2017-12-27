@@ -13,3 +13,4 @@ Create spells and integrate them into the character and combat systems.
 ## Progress:
 
 * Damage spells, both aoe and single target added
+* Healing spells, aoe, self, ally, any target added.

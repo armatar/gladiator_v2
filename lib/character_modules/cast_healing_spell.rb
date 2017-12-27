@@ -6,15 +6,13 @@ module CastHealingSpell
   end
 
   def coordinate_healing(spell)
-    dice_bonus = spell[:number_of_dice_bonus]
-    healing = get_base_spell_healing(spell, get_bonus(dice_bonus))
+    healing = get_base_spell_healing(spell)
     healing_bonus = spell[:healing_bonus]
     get_full_spell_healing(healing, get_bonus(healing_bonus))
   end
 
-  def get_base_spell_healing(spell, bonus)
-    number_of_dice = spell[:number_of_dice] + bonus
-    roll_dice(spell[:dice], number_of_dice)
+  def get_base_spell_healing(spell)
+    roll_dice(spell[:dice], get_bonus(spell[:number_of_dice]))
   end
 
   def get_full_spell_healing(base_healing, bonus_healing)

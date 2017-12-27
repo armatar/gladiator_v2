@@ -55,10 +55,24 @@ class Spells
     @healing_spells = {
       'cure light wounds' => { name: 'cure light wounds', level: 1, target: 'any',
                                type: 'healing', attribute: 'hp', dice: 8,
-                               number_of_dice: 1, healing_bonus: 'proficiency',
-                               number_of_dice_bonus: false, casting_cost: 20,
+                               number_of_dice: 1, healing_bonus: 'proficiency', casting_cost: 20,
                                cost_pool: 'mana', price: 200,
-                               description: 'You use your magic to mend some of your cuts and bruises. \nHeals 1d8 + magic proficiency point per level.'}
+                               description: 'You use your magic to mend some of your cuts and bruises. \nHeals 1d8 + magic proficiency point.'},
+
+      'burst of light' => { name: 'burst of light', level: 1, target: 'all', type: 'healing',
+                            attribute: 'hp', dice: 8, number_of_dice: 'level',
+                            healing_bonus: 'magic', casting_cost: 20, cost_pool: 'mana', price: 200,
+                            description: 'A burst of light heals yourself and all allies. \nHeals 1d8 + magic modifier point per level.'},
+
+      'healing hands' => { name: 'healing hands', level: 1, target: 'ally', type: 'healing',
+                           attribute: 'hp', dice: 8, number_of_dice: 'level',
+                           healing_bonus: 'magic', casting_cost: 20, cost_pool: 'mana', price: 200,
+                           description: 'Lay your hands on an ally to heal them. \nHeals 1d8 + magic modifier point per level.'},
+
+      'inner light' => { name: 'inner light', level: 1, target: 'self', type: 'healing',
+                         attribute: 'hp', dice: 6, number_of_dice: 1,
+                         healing_bonus: 'charisma', casting_cost: 20, cost_pool: 'mana', price: 200,
+                         description: 'Heal yourself with your inner light. \nHeals 1d6 + charisma modifier point.'}
     }
   end
 
