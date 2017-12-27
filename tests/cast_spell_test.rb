@@ -26,7 +26,7 @@ class CastSpellTest < MiniTest::Test
     end
   end
 
-  heal_should_not_be_nil = { 'healing' => :healing, 'message' => :message }
+  heal_should_not_be_nil = { 'message' => :message }
 
   heal_should_not_be_nil.each do |name, attribute|
     define_method("test_that_#{name}_is_not_nil_with_healing_any") do

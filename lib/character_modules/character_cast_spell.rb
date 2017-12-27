@@ -21,16 +21,30 @@ module CharacterCastSpell
   def cast_healing_spell(spell)
     message = []
     if spell[:target] == 'all'
+      @party.each do |member|
+        message.push(cast_healing_helper(member), spell)
+      end
     elsif spell[:target] == 'ally'
+      without_player = @party.dup
+      without_player.shift
+      target = get_random_target(without_player)
+      message = cast_healing_helper(without_player[target], spell)
     elsif spell[:target] == 'self'
+      message = cast_healing_helper(self, spell)
     elsif spell[:target] == 'any'
       target = get_random_target(@party)
-      message.push("#{@name} heals #{@party[target].name} with #{spell[:name]}!")
-      attack_object = @party[target].get_healing(spell)
-      return false unless attack_object
-      attack_object[:message].unshift(message)
-      return attack_object
+      message = cast_healing_helper(@party[target], spell)
     end
+    return false unless message
+    { message: message }
+  end
+
+  def cast_healing_helper(target, spell)
+    message = []
+    message.push("#{@name} heals #{target.name} with #{spell[:name]}!")
+    healing = target.get_healing(spell)
+    return false unless healing
+    message.push(target.heal(spell[:attribute], healing))
   end
 
   def cast_damage_spell(spell, enemies)

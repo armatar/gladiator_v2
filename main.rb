@@ -24,6 +24,6 @@ character2.known_spells.merge!(Spells.damage_spells)
 character1.known_spells.merge!(Spells.healing_spells)
 character2.known_spells.merge!(Spells.healing_spells)
 
-combat = Combat.new(character1.party, [character3, character4])
+combat = Combat.new(character1.party, [character4])
 
 combat.fight

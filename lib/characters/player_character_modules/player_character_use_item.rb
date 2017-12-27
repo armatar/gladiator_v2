@@ -26,7 +26,8 @@ module PlayerCharacterUseItem
     when 'any'
       party_use_item(item, @party, question)
     when 'ally'
-      without_player = @party.shift
+      without_player = @party.dup
+      without_player.shift
       return party_use_item(item, without_player, question)
     when 'self'
       return heal(item[:stat], item[:bonus])

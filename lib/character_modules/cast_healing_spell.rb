@@ -22,8 +22,8 @@ module CastHealingSpell
   end
 
   def get_max_healing(healing, hp, max_hp)
-    healing = max_hp - hp if (hp + healing) > max_hp
-    { healing: healing, message: ["#{@name} is healed by #{healing} points."] }
+    return (max_hp - hp) if (hp + healing) > max_hp
+    healing
   end
 
   def check_if_fully_healed(attribute)
