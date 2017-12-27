@@ -48,6 +48,7 @@ module CharacterCalculations
     calculate_magic_resist(@mag_modifier, @cha_modifier, @magic_prof)
     calculate_cbm
     calculate_mana
+    update_modifiers
   end
 
   def calculate_bab(level)

@@ -39,18 +39,18 @@ class Character
     @controlled = false
     @dead = false
     @level = 1
-    set_base_attributes
+    set_base_attributes(8, 8, 8, 8, 8)
     set_base_stats
     calculate_initial_stats
     @init = rand(1..5)
   end
 
-  def set_base_attributes
-    @str = 8
-    @dex = 8
-    @con = 8
-    @mag = 8
-    @cha = 8
+  def set_base_attributes(str, dex, con, mag, cha)
+    @str = str
+    @dex = dex
+    @con = con
+    @mag = mag
+    @cha = cha
   end
 
   def set_base_stats
@@ -67,5 +67,38 @@ class Character
 
   def join_party(party)
     @party.concat(party)
+  end
+
+  def update_stat(stat, points_to_update)
+    case stat
+    when 'ac'
+      @ac += points_to_update
+    when 'attack'
+      @attack += points_to_update
+    when 'damage'
+      @damage += points_to_update
+    when 'max hp'
+      @max_hp += points_to_update
+    when 'magic resist'
+      @mag_resist += points_to_update
+    when 'spell failure'
+      points_to_update *= 10
+      @spell_failure_chance += points_to_update
+    when 'dex modifier'
+      @dex_modifier += points_to_update
+      calculate_all_variable_stats
+    when 'str modifier'
+      @str_modifier += points_to_update
+      calculate_all_variable_stats
+    when 'con modifier'
+      @con_modifier += points_to_update
+      calculate_all_variable_stats
+    when 'mag modifier'
+      @mag_modifier += points_to_update
+      calculate_all_variable_stats
+    when 'cha modifier'
+      @cha_modifier += points_to_update
+      calculate_all_variable_stats
+    end
   end
 end

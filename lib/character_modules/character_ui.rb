@@ -12,6 +12,12 @@ module CharacterUI
     print_line
     puts Paint['BAB: '.ljust(15), :bold] + format('%+d', @bab).to_s
     puts Paint['Init: '.ljust(15), :bold] + format('%+d', @init).to_s
+    print_line
+    puts Paint['Str: '.ljust(15), :bold] + @str.to_s.ljust(15) + format('%+d', @str_modifier).to_s
+    puts Paint['Dex: '.ljust(15), :bold] + @dex.to_s.ljust(15) + format('%+d', @dex_modifier).to_s
+    puts Paint['Con: '.ljust(15), :bold] + @con.to_s.ljust(15) + format('%+d', @con_modifier).to_s
+    puts Paint['Mag: '.ljust(15), :bold] + @mag.to_s.ljust(15) + format('%+d', @mag_modifier).to_s
+    puts Paint['Cha: '.ljust(15), :bold] + @cha.to_s.ljust(15) + format('%+d', @cha_modifier).to_s
   end
 
   def print_party_names(party)
