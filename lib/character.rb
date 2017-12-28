@@ -43,7 +43,6 @@ class Character
     set_base_prof_points
     set_base_stats
     calculate_initial_stats
-    @init = rand(1..5)
   end
 
   def set_base_attributes(str = 8, dex = 8, con = 8, mag = 8, cha = 8)

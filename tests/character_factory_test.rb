@@ -33,4 +33,25 @@ class CharacterFactoryTest < MiniTest::Test
       assert_equal(total, att_hash.values.reduce(:+))
     end
   end
+
+  new_character = RandomCharacterFactory.randomize(CHARACTER, 1)
+
+  attribute_value = [CHARACTER.str, CHARACTER.dex, CHARACTER.con, CHARACTER.mag,
+                       CHARACTER.cha].reduce(:+)
+  prof_value = [CHARACTER.one_hand_prof, CHARACTER.two_hand_prof, CHARACTER.dual_wield_prof,
+                  CHARACTER.unarmed_prof, CHARACTER.magic_prof].reduce(:+)
+
+  new_att_value = [new_character.str, new_character.dex, new_character.con, new_character.mag,
+                new_character.cha].reduce(:+)
+  new_prof_value = [new_character.one_hand_prof, new_character.two_hand_prof, new_character.dual_wield_prof,
+           new_character.unarmed_prof, new_character.magic_prof].reduce(:+)
+
+  stats_should_change = { 'attributes' =>  [attribute_value, new_att_value],
+                          'proficiencies' => [prof_value, new_prof_value] }
+
+  stats_should_change.each do |stat, value|
+    define_method("test_that_#{stat}_total_increases_with_randomize") do
+      assert_operator(value[0], :<, value[1])
+    end
+  end
 end

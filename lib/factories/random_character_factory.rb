@@ -1,7 +1,7 @@
 # A factory to create random characters of a given level.
 class RandomCharacterFactory
   def self.randomize(character, level)
-    @random_character = character
+    @random_character = character.dup
     skills = assign_skills
     max_hash = get_stat_max(skills[:primary], skills[:secondary])
     att_hash = randomize_attributes(20, max_hash)
