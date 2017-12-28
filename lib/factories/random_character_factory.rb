@@ -1,5 +1,11 @@
+require_relative './random_character_inventory.rb'
+require_relative '../spells.rb'
+require_relative '../items.rb'
+
 # A factory to create random characters of a given level.
 class RandomCharacterFactory
+  extend RandomCharacterInventory
+
   def self.randomize(character, level)
     @random_character = character.dup
     skills = assign_skills
@@ -13,6 +19,7 @@ class RandomCharacterFactory
                                            prof_hash[:two_hand], prof_hash[:unarmed],
                                            prof_hash[:magic])
     @random_character.calculate_initial_stats
+    @random_character = give_inventory(skills[:primary], @random_character)
     @random_character
   end
 

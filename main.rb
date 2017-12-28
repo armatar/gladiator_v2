@@ -13,17 +13,18 @@ character4 = Character.new('Enemy 2')
 
 character2.party = character1.join_party([character2])
 #character2.print_character_sheet
-
-character1.inventory = { 'health potion' => { name: 'health potion',
+=begin
+#character1.inventory = { 'health potion' => { name: 'health potion',
                                               type: 'healing',
                                               stat: 'hp',
                                               bonus: 20,
                                               target: 'any',
                                               price: 10 } }
-character1.known_spells.merge!(Spells.damage_spells)
-character2.known_spells.merge!(Spells.damage_spells)
-character1.known_spells.merge!(Spells.healing_spells)
-character2.known_spells.merge!(Spells.healing_spells)
+=end
+#character1.known_spells.merge!(Spells.damage_spells)
+#character2.known_spells.merge!(Spells.damage_spells)
+#character1.known_spells.merge!(Spells.healing_spells)
+#character2.known_spells.merge!(Spells.healing_spells)
 
 puts character1.max_hp
 character1 = RandomCharacterFactory.randomize(character1, 1)

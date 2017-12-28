@@ -29,9 +29,9 @@ class Spells
     @spells = {}
     @spells.merge!(create_damage_spells)
     @spells.merge!(create_healing_spells)
-    @spells.merge!(create_buff_spells)
-    @spells.merge!(@curse_spells)
-    @spells.merge!(create_hybrid_spells)
+    # @spells.merge!(create_buff_spells)
+    # @spells.merge!(@curse_spells)
+    # @spells.merge!(create_hybrid_spells)
   end
 
   def self.create_damage_spells

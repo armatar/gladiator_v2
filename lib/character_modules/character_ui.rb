@@ -24,6 +24,13 @@ module CharacterUI
     puts Paint['Two Handed: '.ljust(15), :bold] + @two_hand_prof.to_s.ljust(15)
     puts Paint['Unarmed: '.ljust(15), :bold] + @unarmed_prof.to_s.ljust(15)
     puts Paint['Magic: '.ljust(15), :bold] + @magic_prof.to_s.ljust(15)
+    print_line
+    puts Paint['Equipped Weapon: '.ljust(15), :bold] + @equipped_weapon[:name].to_s.ljust(15)
+    puts Paint['Equipped Weapon: '.ljust(15), :bold] +
+         @equipped_shield[:name].to_s.ljust(15) if @equipped_shield
+    print_line
+    display_inventory(@inventory)
+    display_known_spells(@known_spells)
   end
 
   def print_party_names(party)
@@ -41,7 +48,7 @@ module CharacterUI
       puts 'Inventory is empty.'
     else
       inventory.each_pair do |name, item|
-        print name.ljust(15) + 'Type: '.ljust(5) + item[:type]
+        print name.ljust(22) + 'Type: '.ljust(5) + item[:type]
         new_line
       end
     end
@@ -55,7 +62,7 @@ module CharacterUI
       puts 'No spells known.'
     else
       spells.each_pair do |name, spell|
-        print name.ljust(15) + spell[:description]
+        print name.ljust(22) + spell[:description]
         new_line
       end
     end

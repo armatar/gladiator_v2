@@ -16,10 +16,10 @@ class Character
   include UIModules
 
   attr_accessor :hp, :mana, :dead, :party, :inventory, :known_spells
+  attr_accessor :equipped_weapon, :equipped_shield
   attr_reader :name, :level, :ac, :bab, :max_hp, :init, :max_mana, :controlled
   attr_reader :mag_resist, :cbm, :cbm_def, :shield_bonus, :armor_bonus
   attr_reader :spell_failure_chance, :str, :dex, :con, :mag, :cha
-  attr_reader :equipped_weapon, :equipped_shield
   attr_reader :str_modifier, :dex_modifier, :con_modifier, :mag_modifier
   attr_reader :cha_modifier, :staff_atk, :staff_damage
   attr_reader :attack, :one_hand_atk, :dual_wield_atk, :two_hand_atk
