@@ -7,7 +7,7 @@ module PlayerCharacterCastSpell
       return false if spell_name == 'back'
       puts spell_name
       spell = check_if_valid_spell(spell_name)
-      attack_object = cast_spell(spell, enemies, @party)
+      attack_object = cast_spell(spell, enemies, @party) if spell
       return attack_object if attack_object
     end
   end

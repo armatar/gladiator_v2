@@ -1,3 +1,4 @@
+require_relative '../character.rb'
 require_relative './random_character_inventory.rb'
 require_relative '../spells.rb'
 require_relative '../items.rb'
@@ -6,8 +7,8 @@ require_relative '../items.rb'
 class RandomCharacterFactory
   extend RandomCharacterInventory
 
-  def self.randomize(character, level)
-    @random_character = character.dup
+  def self.randomize(level, name)
+    @random_character = Character.new(name)
     skills = assign_skills
     max_hash = get_stat_max(skills[:primary], skills[:secondary])
     att_hash = randomize_attributes(20, max_hash)
@@ -20,6 +21,7 @@ class RandomCharacterFactory
                                            prof_hash[:magic])
     @random_character.calculate_initial_stats
     @random_character = give_inventory(skills[:primary], @random_character)
+    @random_character.party[0] = @random_character
     @random_character
   end
 

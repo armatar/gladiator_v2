@@ -33,5 +33,5 @@ You can run *ruby main.rb* to begin the combat simulator.
 
 ### How To Run Tests
 
-Run rake command to run all tests.
+Run 'rake' to run all tests.
  
