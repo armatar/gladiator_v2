@@ -118,15 +118,15 @@ module CharacterCalculations
 
   def get_attack_and_damage_array
     attack_and_damage_array = ''
-    if @equipped_weapon[:type] == '1-hand weapon'
+    if @equipped_weapon[:subtype] == '1-hand'
       attack_and_damage_array = [@one_hand_atk, @one_hand_damage]
-    elsif @equipped_weapon[:type] == '2-hand weapon'
+    elsif @equipped_weapon[:subtype] == '2-hand'
       attack_and_damage_array = [@two_hand_atk, @two_hand_damage]
-    elsif @equipped_weapon[:type] == 'unarmed weapon'
+    elsif @equipped_weapon[:subtype] == 'unarmed'
       attack_and_damage_array = [@unarmed_atk, @unarmed_damage]
-    elsif @equipped_weapon[:type] == 'dual wield weapon'
+    elsif @equipped_weapon[:subtype] == 'dual wield'
       attack_and_damage_array = [@dual_wield_atk, @dual_wield_damage]
-    elsif @equipped_weapon[:type] == 'staff'
+    elsif @equipped_weapon[:subtype] == 'staff'
       attack_and_damage_array = [@staff_atk, @staff_damage]
     end
     attack_and_damage_array

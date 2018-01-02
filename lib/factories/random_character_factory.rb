@@ -1,4 +1,5 @@
 require_relative '../character.rb'
+require_relative '../characters/player_character.rb'
 require_relative './random_character_inventory.rb'
 require_relative '../spells.rb'
 require_relative '../items.rb'
@@ -7,8 +8,12 @@ require_relative '../items.rb'
 class RandomCharacterFactory
   extend RandomCharacterInventory
 
-  def self.randomize(level, name)
-    @random_character = Character.new(name)
+  def self.randomize(level, name, controlled)
+    if controlled
+      @random_character = PlayerCharacter.new(name)
+    else
+      @random_character = Character.new(name)
+    end
     skills = assign_skills
     max_hash = get_stat_max(skills[:primary], skills[:secondary])
     att_hash = randomize_attributes(20, max_hash)
@@ -71,7 +76,7 @@ class RandomCharacterFactory
   def self.get_stat_max(primary_skill, secondary_skill)
     max_hash = {}
     case primary_skill
-    when '1-hand weapon', 'dual wield weapon', '2-hand weapon', 'unarmed weapon'
+    when '1-hand', 'dual wield', '2-hand', 'unarmed'
       max_hash[:str_max] = 99
       max_hash[:dex_max] = 99
       max_hash[:con_max] = 99
@@ -111,15 +116,15 @@ class RandomCharacterFactory
     prof_hash = { one_hand: 0, dual_wield: 0, two_hand: 0, magic: 0, unarmed: 0 }
     proficiency_points.times do
       case weighted_random_array.sample
-      when '1-hand weapon'
+      when '1-hand'
         prof_hash[:one_hand] += 1
-      when 'dual wield weapon'
+      when 'dual wield'
         prof_hash[:dual_wield] += 1
-      when '2-hand weapon'
+      when '2-hand'
         prof_hash[:two_hand] += 1
       when 'magic'
         prof_hash[:magic] += 1
-      when 'unarmed weapon'
+      when 'unarmed'
         prof_hash[:unarmed] += 1
       end
     end
@@ -128,15 +133,15 @@ class RandomCharacterFactory
 
   def self.get_random_skill(random_number)
     if random_number == 1
-      '1-hand weapon'
+      '1-hand'
     elsif random_number == 2
-      'dual wield weapon'
+      'dual wield'
     elsif random_number == 3
-      '2-hand weapon'
+      '2-hand'
     elsif random_number == 4
       'magic'
     elsif random_number == 5
-      'unarmed weapon'
+      'unarmed'
     end
   end
 end

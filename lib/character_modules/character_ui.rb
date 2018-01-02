@@ -46,14 +46,13 @@ module CharacterUI
     puts Paint["#{@name}'s Inventory", :bold]
     print_line
     if inventory == {}
-      puts 'Inventory is empty.'
+      puts Paint['Inventory is empty.', :red]
     else
       equipment = {}
       consumables = {}
       inventory.each_pair do |name, item|
         case item[:type]
-        when '1-hand weapon', '2-hand weapon', 'dual wield weapon', 'unarmed weapon',
-             'staff', 'armor', 'shield'
+        when 'weapon', 'armor', 'shield'
           equipment[name] = item
         else
           consumables[name] = item
@@ -80,7 +79,7 @@ module CharacterUI
     puts Paint["#{@name}'s Known Spells", :bold]
     print_line
     if spells == {}
-      puts 'No spells known.'
+      puts Paint['No spells known.', :red]
     else
       count = 1
       spells.each_pair do |name, spell|
