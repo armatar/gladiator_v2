@@ -1,99 +1,16 @@
 ---
-fists:
-  :name: fists
-  :type: weapon
-  :subtype: unarmed
-  :dice: 3
-  :number_of_dice: 1
-  :number_of_attacks: 2
-  :crit: 20
-  :crit_damage: 3
-  :enchantment: 0
-bronze sword:
-  :name: bronze sword
-  :type: weapon
-  :subtype: 1-hand
-  :dice: 6
-  :number_of_dice: 1
-  :number_of_attacks: 1
-  :enchantment: 0
-  :crit: 19
-  :crit_damage: 2
-  :price: 10
-bronze greatsword:
-  :name: bronze greatsword
-  :type: 2-hand weapon
-  :dice: 8
-  :number_of_dice: 1
-  :number_of_attacks: 1
-  :enchantment: 0
-  :crit: 20
-  :crit_damage: 3
-  :price: 10
-bronze knuckles:
-  :name: bronze knuckles
-  :type: weapon
-  :subtype: unarmed
+burning hands:
+  :name: burning hands
+  :level: 1
+  :type: damage
   :dice: 4
   :number_of_dice: 1
-  :number_of_attacks: 2
-  :enchantment: 0
-  :crit: 20
-  :crit_damage: 3
-  :price: 10
-bronze dual swords:
-  :name: bronze dual swords
-  :type: weapon
-  :subtype: dual wield
-  :dice: 6
-  :number_of_dice: 1
-  :number_of_attacks: 2
-  :enchantment: 0
-  :crit: 18
-  :crit_damage: 2
-  :price: 10
-wooden staff:
-  :name: wooden staff
-  :type: weapon
-  :subtype: staff
-  :dice: 4
-  :number_of_dice: 1
-  :number_of_attacks: 1
-  :enchantment: 0
-  :crit: 20
-  :crit_damage: 2
-  :price: 10
-bronze shield:
-  :name: bronze shield
-  :type: shield
-  :defense_bonus: 1
-  :enchantment: 0
-  :price: 10
-small health potion:
-  :name: small health potion
-  :type: healing
-  :stat: hp
-  :bonus: 10
-  :target: any
-  :price: 10
-large health potion:
-  :name: large health potion
-  :type: healing
-  :stat: hp
-  :bonus: 30
-  :target: any
-  :price: 30
-small mana potion:
-  :name: small mana potion
-  :type: healing
-  :stat: mana
-  :bonus: 20
-  :target: any
-  :price: 10
-large mana potion:
-  :name: large mana potion
-  :type: healing
-  :stat: mana
-  :bonus: 50
-  :target: any
-  :price: 30
+  :damage_bonus: false
+  :number_of_dice_bonus: proficiency
+  :bonus_missles: false
+  :target: all
+  :casting_cost: 10
+  :cost_pool: mana
+  :price: 100
+  :description: "You touch your opponent with hands of flame. \nDeals 1d6 damage per
+    magic proficiency point."

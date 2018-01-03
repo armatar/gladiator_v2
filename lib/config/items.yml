@@ -9,6 +9,7 @@ fists:
   :crit: 20
   :crit_damage: 3
   :enchantment: 0
+  :description: Your own two fleshy fists.
 bronze sword:
   :name: bronze sword
   :type: weapon
@@ -20,6 +21,7 @@ bronze sword:
   :crit: 19
   :crit_damage: 2
   :price: 10
+  :description: A dull one-handed sword of questionable make.
 bronze greatsword:
   :name: bronze greatsword
   :type: weapon
@@ -31,6 +33,7 @@ bronze greatsword:
   :crit: 20
   :crit_damage: 3
   :price: 10
+  :description: A blunt two-handed sword that has a striking resemblence to a shovel.
 bronze knuckles:
   :name: bronze knuckles
   :type: weapon
@@ -42,6 +45,7 @@ bronze knuckles:
   :crit: 20
   :crit_damage: 3
   :price: 10
+  :description: Better than your skin, I guess.
 bronze dual swords:
   :name: bronze dual swords
   :type: weapon
@@ -53,6 +57,7 @@ bronze dual swords:
   :crit: 18
   :crit_damage: 2
   :price: 10
+  :description: Closer to kitchen knives than weapons. Though that might be an insult to the knives.
 wooden staff:
   :name: wooden staff
   :type: weapon
@@ -64,12 +69,14 @@ wooden staff:
   :crit: 20
   :crit_damage: 2
   :price: 10
+  :description: Fresh from the tree. Watch out for splinters.
 bronze shield:
   :name: bronze shield
   :type: shield
   :defense_bonus: 1
   :enchantment: 0
   :price: 10
+  :description: A nice chunk of wood.
 small health potion:
   :name: small health potion
   :type: healing
@@ -77,6 +84,7 @@ small health potion:
   :bonus: 10
   :target: any
   :price: 10
+  :description: Heal yourself or you allies for 10 points.
 large health potion:
   :name: large health potion
   :type: healing
@@ -84,6 +92,7 @@ large health potion:
   :bonus: 30
   :target: any
   :price: 30
+  :description: Heal yourself or your allies for 30 points.
 small mana potion:
   :name: small mana potion
   :type: healing
@@ -91,6 +100,7 @@ small mana potion:
   :bonus: 20
   :target: any
   :price: 10
+  :description: Heal the mana of your or your ally for 20 points.
 large mana potion:
   :name: large mana potion
   :type: healing
@@ -98,3 +108,4 @@ large mana potion:
   :bonus: 50
   :target: any
   :price: 30
+  :description: Heal the mana of your or your ally for 50 points.

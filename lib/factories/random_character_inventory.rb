@@ -29,7 +29,8 @@ module RandomCharacterInventory
   def give_spells(character)
     number_of_spells = character.mag_modifier + character.cha_modifier
     number_of_spells = 0 if number_of_spells < 0
-    character.known_spells = Spells.all_spells.to_a.sample(number_of_spells).to_h
+    character.known_spells.merge!(Spells.damage_spells.to_a.sample(number_of_spells).to_h)
+    character.known_spells.merge!(Spells.healing_spells.to_a.sample(number_of_spells).to_h)
     character
   end
 end

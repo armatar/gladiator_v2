@@ -4,7 +4,7 @@ require 'yaml'
 # an easily obtainable way.
 class Items
   def self.yml_file
-    YAML.load_file(File.join(__dir__, 'items.yml'))
+    YAML.load_file(File.join(__dir__, 'config/items.yml'))
   end
 
   def self.default_weapon

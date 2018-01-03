@@ -1,16 +1,13 @@
 require 'byebug'
 require_relative '../test_helper.rb'
+require_relative '../lib/items.rb'
 require_relative '../lib/characters/player_characters/test_player_character.rb'
 
 # A test for player character item use.
 class PCUseItemTest < MiniTest::Test
   pc = TestPlayerCharacter.new('Test')
-  healing_item1 = { name: 'small_health_potion', type: 'healing', stat: 'hp',
-                    bonus: 1, target: 'any', price: 10 }
-  healing_item2 = { name: 'large_health_potion', type: 'healing', stat: 'hp',
-                    bonus: 10, target: 'any', price: 10 }
-  pc.inventory['small health potion'] = healing_item1
-  pc.inventory['large health potion'] = healing_item2
+  pc.inventory['small_health_potion'] = Items.consumables['small health potion']
+  pc.inventory['large_health_potion'] = Items.consumables['large health potion']
 
   pc.inventory.each_pair do |name, item|
     define_method("test_use_healing_item_#{name}") do

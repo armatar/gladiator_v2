@@ -58,8 +58,8 @@ module CharacterUI
           consumables[name] = item
         end
       end
-      display_specific_inventory(equipment, 'Equipment')
-      display_specific_inventory(consumables, 'Consumables')
+      display_specific_inventory(equipment, 'e q u i p m e n t ')
+      display_specific_inventory(consumables, 'c o n s u m a b l e s ')
     end
     print_line
   end
@@ -69,7 +69,8 @@ module CharacterUI
     new_line
     count = 1
     inventory.each_pair do |name, item|
-      puts "#{count}. " + name.ljust(22) + 'Type: '.ljust(5) + item[:type]
+      puts "#{count}. " + Paint["#{name}:".ljust(22), :italic] + "\n" + 
+           item[:description]
       count += 1
     end
     new_line
@@ -83,8 +84,9 @@ module CharacterUI
     else
       count = 1
       spells.each_pair do |name, spell|
-        print "#{count}. " + name.ljust(22) + spell[:description]
+        print "#{count}. " + Paint["#{name}:".ljust(22), :italic] + "\n" + spell[:description]
         count += 1
+        new_line
         new_line
       end
     end
