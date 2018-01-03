@@ -50,4 +50,29 @@ class CharacterTest < MiniTest::Test
       refute_nil(attribute)
     end
   end
+
+  new_character = TestCharacter.new('Test Character')
+  stat = 8
+  new_character.ac = stat
+  new_character.attack = stat
+  new_character.damage = stat
+  new_character.max_hp = stat
+  new_character.mag_resist = stat
+  new_character.spell_failure_chance = stat
+  new_character.dex = stat
+  new_character.str = stat
+  new_character.con = stat
+  new_character.mag = stat
+  new_character.cha = stat
+  update = 10
+
+  stat_update = { 'ac' => 18, 'attack' => 18, 'damage' => 18, 'max hp' => 18,
+                  'magic resist' => 18, 'spell failure' => 100, 'dex' => 18, 'str' => 18,
+                  'con' => 18, 'mag' => 18, 'cha' => 18 }
+
+  stat_update.each_pair do |name, result|
+    define_method("test_that_attribute_#{name}_updates") do
+      assert_equal(result, new_character.update_stat(name, update))
+    end
+  end
 end

@@ -87,21 +87,17 @@ class Character
     when 'spell failure'
       points_to_update *= 10
       @spell_failure_chance += points_to_update
-    when 'dex modifier'
-      @dex_modifier += points_to_update
-      calculate_all_variable_stats
-    when 'str modifier'
-      @str_modifier += points_to_update
-      calculate_all_variable_stats
-    when 'con modifier'
-      @con_modifier += points_to_update
-      calculate_all_variable_stats
-    when 'mag modifier'
-      @mag_modifier += points_to_update
-      calculate_all_variable_stats
-    when 'cha modifier'
-      @cha_modifier += points_to_update
-      calculate_all_variable_stats
+      @spell_failure_chance = 100 if @spell_failure_chance > 100
+    when 'dex'
+      @dex += points_to_update
+    when 'str'
+      @str += points_to_update
+    when 'con'
+      @con += points_to_update
+    when 'mag'
+      @mag += points_to_update
+    when 'cha'
+      @cha += points_to_update
     end
   end
 end
