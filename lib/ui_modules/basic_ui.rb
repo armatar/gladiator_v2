@@ -15,20 +15,23 @@ module BasicUI
   end
 
   def ask_question(question, tip = nil, options = nil)
-    puts question
     print_line
-    puts 'Tip! ' + tip if tip
+    puts Paint["Q: #{question}", :bold]
+    if tip || options
+      print_line
+    end
+    puts Paint['Tip! ', :italic] + tip if tip
     if options
-      print 'Options: '.ljust(5)
+      print Paint['Options: '.ljust(5), :italic]
       options.each do |option|
-        print '[' + option + ']'.ljust(5)
+        print '[ ' + option + ' ]'.ljust(5)
       end
+      new_line
     end
     prompt_answer
   end
 
   def prompt_answer
-    new_line
     print_line
     print '> '
     gets.chomp.downcase

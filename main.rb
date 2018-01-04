@@ -3,6 +3,7 @@ require_relative 'lib/characters/player_character.rb'
 require_relative 'lib/combat.rb'
 require_relative 'lib/spells.rb'
 require_relative 'lib/factories/random_character_factory.rb'
+require_relative 'lib/game.rb'
 
 # character5 = Character.new('Enemy 3')
 # character6 = Character.new('Ally 3')
@@ -14,7 +15,7 @@ require_relative 'lib/factories/random_character_factory.rb'
                                               bonus: 20,
                                               target: 'any',
                                               price: 10 } }
-=end
+
 #character1.known_spells.merge!(Spells.damage_spells)
 #character2.known_spells.merge!(Spells.damage_spells)
 #character1.known_spells.merge!(Spells.healing_spells)
@@ -33,3 +34,7 @@ character1.print_character_sheet
 combat = Combat.new(character2.party, [character3, character4])
 
 combat.fight
+=end
+
+game = Game.new
+game.start

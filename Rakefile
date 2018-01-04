@@ -5,6 +5,11 @@ Rake::TestTask.new do |t|
   t.warning = false
 end
 
-desc 'Run tests'
-
 task default: :test
+
+=begin
+# idk what I'm doing here.
+task :test do
+  sh "docker run -it f596fba1668a"
+end
+=end
