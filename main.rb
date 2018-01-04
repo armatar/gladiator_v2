@@ -36,5 +36,8 @@ combat = Combat.new(character2.party, [character3, character4])
 combat.fight
 =end
 
-game = Game.new
-game.start
+#game = Game.new
+#game.start
+
+character = PlayerCharacter.new('Name')
+character.create_character

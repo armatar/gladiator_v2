@@ -14,24 +14,43 @@ module CharacterUI
     puts Paint['BAB: '.ljust(15), :bold] + format('%+d', @bab).to_s
     puts Paint['Init: '.ljust(15), :bold] + format('%+d', @init).to_s
     print_line
-    puts Paint['Str: '.ljust(15), :bold] + @str.to_s.ljust(15) + format('%+d', @str_modifier).to_s
-    puts Paint['Dex: '.ljust(15), :bold] + @dex.to_s.ljust(15) + format('%+d', @dex_modifier).to_s
-    puts Paint['Con: '.ljust(15), :bold] + @con.to_s.ljust(15) + format('%+d', @con_modifier).to_s
-    puts Paint['Mag: '.ljust(15), :bold] + @mag.to_s.ljust(15) + format('%+d', @mag_modifier).to_s
-    puts Paint['Cha: '.ljust(15), :bold] + @cha.to_s.ljust(15) + format('%+d', @cha_modifier).to_s
-    print_line
-    puts Paint['One Handed: '.ljust(15), :bold] + @one_hand_prof.to_s.ljust(15)
-    puts Paint['Dual Wield: '.ljust(15), :bold] + @dual_wield_prof.to_s.ljust(15)
-    puts Paint['Two Handed: '.ljust(15), :bold] + @two_hand_prof.to_s.ljust(15)
-    puts Paint['Unarmed: '.ljust(15), :bold] + @unarmed_prof.to_s.ljust(15)
-    puts Paint['Magic: '.ljust(15), :bold] + @magic_prof.to_s.ljust(15)
-    print_line
+    display_attributes
+    display_profs
     puts Paint['Equipped Weapon: '.ljust(15), :bold] + @equipped_weapon[:name].to_s.ljust(15)
     puts Paint['Equipped Weapon: '.ljust(15), :bold] +
          @equipped_shield[:name].to_s.ljust(15) if @equipped_shield
     print_line
     display_inventory(@inventory)
     display_known_spells(@known_spells)
+  end
+
+  def display_attributes
+    puts Paint['Str: '.ljust(15), :bold] + @str.to_s.ljust(15) + format('%+d', @str_modifier).to_s
+    puts Paint['Dex: '.ljust(15), :bold] + @dex.to_s.ljust(15) + format('%+d', @dex_modifier).to_s
+    puts Paint['Con: '.ljust(15), :bold] + @con.to_s.ljust(15) + format('%+d', @con_modifier).to_s
+    puts Paint['Mag: '.ljust(15), :bold] + @mag.to_s.ljust(15) + format('%+d', @mag_modifier).to_s
+    puts Paint['Cha: '.ljust(15), :bold] + @cha.to_s.ljust(15) + format('%+d', @cha_modifier).to_s
+    print_line
+  end
+
+  def display_profs
+    print Paint['One Handed: '.ljust(15), :bold]
+    prof_line(@one_hand_prof)
+    print Paint['Dual Wield: '.ljust(15), :bold]
+    prof_line(@dual_wield_prof)
+    print Paint['Two Handed: '.ljust(15), :bold]
+    prof_line(@two_hand_prof)
+    print Paint['Unarmed: '.ljust(15), :bold]
+    prof_line(@unarmed_prof)
+    print Paint['Magic: '.ljust(15), :bold]
+    prof_line(@magic_prof)
+    print_line
+  end
+
+  def prof_line(number)
+    print 'x ' * number
+    print '_ ' * (10-number)
+    new_line
   end
 
   def print_party_names(party)
