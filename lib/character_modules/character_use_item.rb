@@ -12,7 +12,19 @@ module CharacterUseItem
       when "any"
       when "ally"
       when "self"
-        heal(item[:stat], item[:bonus])
+        heal(item[:stat], get_item_heal_bonus(item[:bonus]))
+    end
+  end
+
+  def get_item_heal_bonus(bonus)
+    if bonus == 'full'
+      @max_hp
+    elsif bonus == 'half'
+      @max_hp / 2
+    elsif bonus == 'quarter'
+      @max_hp / 4
+    else
+      bonus
     end
   end
 

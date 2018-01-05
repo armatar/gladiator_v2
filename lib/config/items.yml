@@ -93,6 +93,14 @@ large health potion:
   :target: any
   :price: 30
   :description: Heal yourself or your allies for 30 points.
+revive:
+  :name: revive
+  :type: healing
+  :stat: hp
+  :bonus: half
+  :target: ally
+  :price: 300
+  :description: Revive a fallen ally to half health.
 small mana potion:
   :name: small mana potion
   :type: healing

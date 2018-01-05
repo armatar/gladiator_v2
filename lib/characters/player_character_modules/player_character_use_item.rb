@@ -30,13 +30,13 @@ module PlayerCharacterUseItem
       without_player.shift
       return party_use_item(item, without_player, question)
     when 'self'
-      return heal(item[:stat], item[:bonus])
+      return heal(item[:stat], get_item_heal_bonus(item[:bonus]))
     end
   end
 
   def party_use_item(item, party, question)
     options = party.inject([]) { |names, x| names.push(x.name) }
     target = select_target(party, question, nil, options)
-    party[target].heal(item[:stat], item[:bonus])
+    party[target].heal(item[:stat], party[target].get_item_heal_bonus(item[:bonus]))
   end
 end
