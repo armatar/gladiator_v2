@@ -89,6 +89,8 @@ module CreateCharacter
         num_to_update = get_number_to_update(@magic_prof, 10, 0, @prof_points)
         @magic_prof += num_to_update if num_to_update
         @prof_points -= num_to_update if num_to_update
+      when 'back'
+        break
       else
         error = 'Not a valid option. Pick from the provided proficiencies.'
       end

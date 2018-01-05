@@ -41,7 +41,7 @@ module PlayerCharacterUI
   def prof_definitions
     print_line
     puts Paint['One Handed:'.ljust(15), :italic, :white] + 'Proficiency with one handed weapons ' \
-         'and shields'
+         'and shields.'
     puts Paint['Dual Wield:'.ljust(15), :italic, :white] + 'Proficiency with dual wielding. Dual ' \
          'wield weapons provide two attacks per turn.'
     puts Paint['Two Handed:'.ljust(15), :italic, :white] + 'Proficiency with two handed weapons. ' \
