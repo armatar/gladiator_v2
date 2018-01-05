@@ -60,4 +60,14 @@ class CharacterFactoryTest < MiniTest::Test
       assert_equal(num_spells, RandomCharacterFactory.give_spells(character3).known_spells.length)
     end
   end
+
+  def test_random_characater_is_player_character_when_controlled
+    character = RandomCharacterFactory.randomize(1, 'Test', true)
+    assert(character.instance_of?(PlayerCharacter))
+  end
+
+  def test_random_characater_is_character_when_not_controlled
+    character = RandomCharacterFactory.randomize(1, 'Test', false)
+    assert(character.instance_of?(Character))
+  end
 end
