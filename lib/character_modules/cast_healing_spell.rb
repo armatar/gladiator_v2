@@ -8,7 +8,9 @@ module CastHealingSpell
   def coordinate_healing(spell)
     healing = get_base_spell_healing(spell)
     healing_bonus = spell[:healing_bonus]
-    get_full_spell_healing(healing, get_bonus(healing_bonus))
+    healing = get_full_spell_healing(healing, get_bonus(healing_bonus))
+    healing = 1 if healing <= 0
+    healing
   end
 
   def get_base_spell_healing(spell)
