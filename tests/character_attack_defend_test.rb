@@ -24,4 +24,20 @@ class CharacterAttackDefendTest < MiniTest::Test
       refute_nil(attribute)
     end
   end
+
+  def test_character_take_damage
+    character = TestCharacter.new('Test')
+    character.hp = 10
+    character.take_damage(5)
+    assert_equal(5, character.hp)
+    refute(character.dead)
+  end
+
+  def test_character_die
+    character = TestCharacter.new('Test')
+    character.hp = 10
+    character.take_damage(11)
+    assert_equal(0, character.hp)
+    assert(character.dead)
+  end
 end
