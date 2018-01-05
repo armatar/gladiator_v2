@@ -93,6 +93,14 @@ large health potion:
   :target: any
   :price: 30
   :description: Heal yourself or your allies for 30 points.
+antiseptic:
+  :name: antiseptic
+  :type: healing
+  :stat: hp
+  :bonus: 10
+  :target: self
+  :price: 10
+  :description: Heal a small amount health on just yourself.
 revive:
   :name: revive
   :type: healing
