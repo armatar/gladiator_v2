@@ -5,21 +5,34 @@ require_relative '../lib/characters/player_characters/test_player_character.rb'
 
 # A test for player character item use.
 class PCUseItemTest < MiniTest::Test
+  def test_that_attack_object_is_created_when_using_item
+    pc = TestPlayerCharacter.new('Test')
+    pc.inventory['antiseptic'] = Items.consumables['antiseptic']
+    pc.max_hp = 100
+    pc.hp = 1
+    with_stdin do |user|
+      user.puts '4'
+      user.puts 'antiseptic'
+      capture_stdout { refute_nil(pc.create_attack_object(pc)[:message]) }
+    end
+  end
+
   pc = TestPlayerCharacter.new('Test')
   ally = TestPlayerCharacter.new('Ally')
   pc.join_party(ally.party)
   pc.inventory['small_health_potion'] = Items.consumables['small health potion']
   pc.inventory['large_health_potion'] = Items.consumables['large health potion']
   pc.inventory['revive'] = Items.consumables['revive']
+  pc.inventory['antiseptic'] = Items.consumables['antiseptic']
 
   pc.inventory.find_all {|x| x[1][:target] == 'any' }.to_h.each_pair do |name, item|
-    define_method("test_use_healing_item_#{name}_on_self") do
+    define_method("test_use_healing_item_#{name}_with_target_any") do
       with_stdin do |user|
         user.puts name
         user.puts 'Test'
         pc.max_hp = 100
         pc.hp = 1
-        result = 1 + item[:bonus]
+        result = 1 + pc.get_item_heal_bonus(item[:bonus])
         capture_stdout { pc.choose_item_to_use }
         assert_equal(result, pc.hp)
       end
@@ -36,6 +49,19 @@ class PCUseItemTest < MiniTest::Test
         result = 1 + ally.get_item_heal_bonus(item[:bonus])
         capture_stdout { pc.choose_item_to_use }
         assert_equal(result, ally.hp)
+      end
+    end
+  end
+
+  pc.inventory.find_all {|x| x[1][:target] == 'self' }.to_h.each_pair do |name, item|
+    define_method("test_use_healing_item_#{name}_with_target_self") do
+      with_stdin do |user|
+        user.puts name
+        pc.max_hp = 100
+        pc.hp = 1
+        result = 1 + pc.get_item_heal_bonus(item[:bonus])
+        capture_stdout { pc.choose_item_to_use }
+        assert_equal(result, pc.hp)
       end
     end
   end
