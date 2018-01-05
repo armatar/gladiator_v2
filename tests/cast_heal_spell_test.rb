@@ -40,4 +40,24 @@ class CastHealSpellTest < MiniTest::Test
       refute_nil(attack_object[attribute])
     end
   end
+  character2 = TestCharacter.new('Test')
+
+  attributes = ['mana', 'hp']
+  attributes.each do |att|
+    define_method("test_#{att}_returns_fully_healed") do
+      character2.send("#{att}=", 100)
+      character2.send("max_#{att}=", 100)
+      assert(character2.check_if_fully_healed(att))
+    end
+  end
+
+  character3 = TestCharacter.new('Test')
+
+  attributes.each do |att|
+    define_method("test_#{att}_returns_not_fully_healed") do
+      character3.send("#{att}=", 10)
+      character3.send("max_#{att}=", 100)
+      refute(character3.check_if_fully_healed(att))
+    end
+  end
 end
