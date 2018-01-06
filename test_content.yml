@@ -9,8 +9,6 @@ burning hands:
   :number_of_dice_bonus: proficiency
   :bonus_missles: false
   :target: all
-  :casting_cost: 10
-  :cost_pool: mana
   :price: 100
   :description: "You touch your opponent with hands of flame. \nDeals 1d6 damage per
     magic proficiency point."
