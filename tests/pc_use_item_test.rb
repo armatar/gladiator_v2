@@ -20,46 +20,45 @@ class PCUseItemTest < MiniTest::Test
   pc = TestPlayerCharacter.new('Test')
   ally = TestPlayerCharacter.new('Ally')
   pc.join_party(ally.party)
-  pc.inventory['small_health_potion'] = Items.consumables['small health potion']
-  pc.inventory['large_health_potion'] = Items.consumables['large health potion']
-  pc.inventory['revive'] = Items.consumables['revive']
-  pc.inventory['antiseptic'] = Items.consumables['antiseptic']
+  pc.inventory = Items.healing_items
 
-  pc.inventory.find_all {|x| x[1][:target] == 'any' }.to_h.each_pair do |name, item|
+  pc.inventory.find_all { |x| x[1][:target] == 'any' }.to_h.each_pair do |name, item|
     define_method("test_use_healing_item_#{name}_with_target_any") do
       with_stdin do |user|
         user.puts name
         user.puts 'Test'
         pc.max_hp = 100
-        pc.hp = 1
-        result = 1 + pc.get_item_heal_bonus(item[:bonus])
+        pc.hp = 0
+        pc.max_mana = 100
+        pc.mana = 0
+        result = pc.get_item_heal_bonus(item[:bonus])
         capture_stdout { pc.choose_item_to_use }
-        assert_equal(result, pc.hp)
+        assert_equal(result, pc.send(item[:stat]))
       end
     end
   end
 
-  pc.inventory.find_all {|x| x[1][:target] == 'ally' }.to_h.each_pair do |name, item|
+  pc.inventory.find_all { |x| x[1][:target] == 'ally' }.to_h.each_pair do |name, item|
     define_method("test_use_healing_item_#{name}_on_ally") do
       with_stdin do |user|
         user.puts name
         user.puts 'Ally'
         ally.max_hp = 100
-        ally.hp = 1
-        result = 1 + ally.get_item_heal_bonus(item[:bonus])
+        ally.hp = 0
+        result = ally.get_item_heal_bonus(item[:bonus])
         capture_stdout { pc.choose_item_to_use }
         assert_equal(result, ally.hp)
       end
     end
   end
 
-  pc.inventory.find_all {|x| x[1][:target] == 'self' }.to_h.each_pair do |name, item|
+  pc.inventory.find_all { |x| x[1][:target] == 'self' }.to_h.each_pair do |name, item|
     define_method("test_use_healing_item_#{name}_with_target_self") do
       with_stdin do |user|
         user.puts name
         pc.max_hp = 100
-        pc.hp = 1
-        result = 1 + pc.get_item_heal_bonus(item[:bonus])
+        pc.hp = 0
+        result = pc.get_item_heal_bonus(item[:bonus])
         capture_stdout { pc.choose_item_to_use }
         assert_equal(result, pc.hp)
       end

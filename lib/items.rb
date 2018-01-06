@@ -23,6 +23,10 @@ class Items
     yml_file.to_a.find_all { |x| x[1][:type] == 'armor' || x[1][:type] == 'shield' }.to_h
   end
 
+  def self.healing_items
+    yml_file.to_a.find_all { |x| x[1][:type] == 'healing' }.to_h
+  end
+
   def self.consumables
     yml_file.to_a.find_all { |x| x[1][:type] == 'healing' }.to_h
   end

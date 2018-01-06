@@ -93,11 +93,19 @@ large health potion:
   :target: any
   :price: 30
   :description: Heal yourself or your allies for 30 points.
+max potion:
+  :name: max potion
+  :type: healing
+  :stat: hp
+  :bonus: full
+  :target: any
+  :price: 10000
+  :description: Heal the full health of any ally or yourself.
 antiseptic:
   :name: antiseptic
   :type: healing
   :stat: hp
-  :bonus: 10
+  :bonus: quarter
   :target: self
   :price: 10
   :description: Heal a small amount health on just yourself.
@@ -105,7 +113,7 @@ revive:
   :name: revive
   :type: healing
   :stat: hp
-  :bonus: half
+  :bonus: quarter
   :target: ally
   :price: 300
   :description: Revive a fallen ally to half health.

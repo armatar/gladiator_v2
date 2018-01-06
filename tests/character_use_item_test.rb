@@ -34,4 +34,16 @@ class CharacterUseItemTest < MiniTest::Test
       assert_equal(key, char.mana)
     end
   end
+  char2 = TestCharacter.new('Test')
+
+  atts_to_test = %w[mana hp]
+
+  atts_to_test.each do |att|
+    define_method("test_#{att}_doesn't_update_over_max") do
+      char2.send("#{att}=", 9)
+      char2.send("max_#{att}=", 10)
+      char2.heal(att, 10)
+      assert_equal(10, char2.send(att))
+    end
+  end
 end
