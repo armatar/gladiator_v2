@@ -6,7 +6,7 @@ require_relative 'player_character_modules.rb'
 class PlayerCharacter < Character
   include PlayerCharacterModules
 
-  attr_reader :att_points, :prof_points
+  attr_accessor :att_points, :prof_points
 
   def initialize(name)
     super(name)

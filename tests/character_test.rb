@@ -59,16 +59,13 @@ class CharacterTest < MiniTest::Test
   new_character.max_hp = stat
   new_character.mag_resist = stat
   new_character.spell_failure_chance = stat
-  new_character.dex = stat
-  new_character.str = stat
-  new_character.con = stat
-  new_character.mag = stat
-  new_character.cha = stat
   update = 10
 
   stat_update = { 'ac' => 18, 'attack' => 18, 'damage' => 18, 'max hp' => 18,
                   'magic resist' => 18, 'spell failure' => 100, 'dex' => 18, 'str' => 18,
-                  'con' => 18, 'mag' => 18, 'cha' => 18 }
+                  'con' => 18, 'mag' => 18, 'cha' => 18, 'one hand prof' => 10,
+                  'dual wield prof' => 10, 'two hand prof' => 10, 'unarmed prof' => 10,
+                  'magic prof' => 10 }
 
   stat_update.each_pair do |name, result|
     define_method("test_that_attribute_#{name}_updates") do

@@ -98,6 +98,16 @@ class Character
       @mag += points_to_update
     when 'cha'
       @cha += points_to_update
+    when 'one hand prof'
+      @one_hand_prof += points_to_update
+    when 'dual wield prof'
+      @dual_wield_prof += points_to_update
+    when 'two hand prof'
+      @two_hand_prof += points_to_update
+    when 'unarmed prof'
+      @unarmed_prof += points_to_update
+    when 'magic prof'
+      @magic_prof += points_to_update
     end
   end
 end

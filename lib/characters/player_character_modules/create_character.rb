@@ -22,6 +22,11 @@ module CreateCharacter
     end
   end
 
+  def update_value(value_string, point_string, num_to_update)
+    update_stat(value_string, num_to_update)
+    self.send("#{point_string}=", num_to_update) if num_to_update
+  end
+
   def update_attributes
     error = nil
     loop do
@@ -33,24 +38,19 @@ module CreateCharacter
       case ask_question('Which attribute did you want to edit?', 'Type [back] to return.')
       when 'str', 'strength'
         num_to_update = get_number_to_update(@str, 18, 8, @att_points)
-        @str += num_to_update if num_to_update
-        @att_points -= num_to_update if num_to_update
+        update_value('str', 'att_points', num_to_update)
       when 'con', 'constitution'
         num_to_update = get_number_to_update(@con, 18, 8, @att_points)
-        @con += num_to_update if num_to_update
-        @att_points -= num_to_update if num_to_update
+        update_value('con', 'att_points', num_to_update)
       when 'dex', 'dexterity'
         num_to_update = get_number_to_update(@dex, 18, 8, @att_points)
-        @dex += num_to_update if num_to_update
-        @att_points -= num_to_update if num_to_update
+        update_value('dex', 'att_points', num_to_update)
       when 'mag', 'magic'
         num_to_update = get_number_to_update(@mag, 18, 8, @att_points)
-        @mag += num_to_update if num_to_update
-        @att_points -= num_to_update if num_to_update
+        update_value('mag', 'att_points', num_to_update)
       when 'cha', 'charisma'
         num_to_update = get_number_to_update(@cha, 18, 8, @att_points)
-        @cha += num_to_update if num_to_update
-        @att_points -= num_to_update if num_to_update
+        update_value('cha', 'att_points', num_to_update)
       when 'back', '[back]'
         break
       else
@@ -71,24 +71,19 @@ module CreateCharacter
       case ask_question('Which proficiency did you want to edit?', 'Type [back] to return.')
       when 'one handed'
         num_to_update = get_number_to_update(@one_hand_prof, 10, 0, @prof_points)
-        @one_hand_prof += num_to_update if num_to_update
-        @prof_points -= num_to_update if num_to_update
+        update_value('one hand prof', 'prof_points', num_to_update)
       when 'dual wield'
         num_to_update = get_number_to_update(@dual_wield_prof, 10, 0, @prof_points)
-        @dual_wield_prof += num_to_update if num_to_update
-        @prof_points -= num_to_update if num_to_update
+        update_value('dual wield prof', 'prof_points', num_to_update)
       when 'two handed'
         num_to_update = get_number_to_update(@two_hand_prof, 10, 0, @prof_points)
-        @two_hand_prof += num_to_update if num_to_update
-        @prof_points -= num_to_update if num_to_update
+        update_value('two hand prof', 'prof_points', num_to_update)
       when 'unarmed'
         num_to_update = get_number_to_update(@unarmed_prof, 10, 0, @prof_points)
-        @unarmed_prof += num_to_update if num_to_update
-        @prof_points -= num_to_update if num_to_update
+        update_value('unarmed prof', 'prof_points', num_to_update)
       when 'magic'
         num_to_update = get_number_to_update(@magic_prof, 10, 0, @prof_points)
-        @magic_prof += num_to_update if num_to_update
-        @prof_points -= num_to_update if num_to_update
+        update_value('magic prof', 'prof_points', num_to_update)
       when 'back'
         break
       else
