@@ -12,11 +12,10 @@ end
 
 desc 'Build docker image'
 task :build do
-  sh 'docker build -t amatar:gladiatorv2 .'
+  sh 'docker build -t amatar/gladiatorv2 .'
 end
 
 desc 'Run docker image'
-task :run => [:build] do
-  sh 'docker run -it amatar:gladiatorv2'
-  sh 'rake test'
+task :run do
+  sh 'docker run -it amatar/gladiatorv2 rake'
 end

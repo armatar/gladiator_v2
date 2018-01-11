@@ -51,7 +51,7 @@ class CreateCharacterTest < MiniTest::Test
     define_method("test_points_to_update_are_updated_properly_when_adding_#{update_number}") do
       with_stdin do |user|
         character3.str = 13
-        character3.att_points = 20
+        character3.att_points = 10
         user.puts 'str'
         user.puts update_number
         user.puts 'back'
