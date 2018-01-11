@@ -1,4 +1,4 @@
-require_relative '../test_helper.rb'
+require_relative 'test_helper.rb'
 require_relative '../lib/factories/random_character_factory.rb'
 require_relative '../lib/characters/test_character.rb'
 require 'byebug'

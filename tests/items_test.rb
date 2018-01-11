@@ -1,4 +1,4 @@
-require_relative '../test_helper.rb'
+require_relative 'test_helper.rb'
 require_relative '../lib/items.rb'
 
 # This test just ensures that the class Items

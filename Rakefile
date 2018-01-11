@@ -1,15 +1,21 @@
 require 'rake/testtask'
 
-Rake::TestTask.new do |t|
-  t.test_files = FileList['tests/*_test.rb']
-  t.warning = false
-end
-
 task default: :test
 
-=begin
-# idk what I'm doing here.
+desc 'Run the tests'
 task :test do
-  sh "docker run -it f596fba1668a"
+  Rake::TestTask.new do |t|
+    t.test_files = FileList['tests/*_test.rb']
+    t.warning = false
+  end
 end
-=end
+
+desc 'Build docker image'
+task :build do
+  sh 'docker build -t amatar/gladiatorv2 .'
+end
+
+desc 'Run docker image'
+task :run do
+  sh 'docker run -it amatar/gladiatorv2 rake'
+end

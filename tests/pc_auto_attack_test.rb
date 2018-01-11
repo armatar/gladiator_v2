@@ -1,5 +1,5 @@
 require 'byebug'
-require_relative '../test_helper.rb'
+require_relative 'test_helper.rb'
 require_relative '../lib/characters/player_characters/test_player_character.rb'
 
 # A test for player character item use.

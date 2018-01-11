@@ -1,4 +1,4 @@
-require_relative '../test_helper.rb'
+require_relative 'test_helper.rb'
 require_relative '../lib/characters/test_character.rb'
 
 # This test just tests the character feature to use items
