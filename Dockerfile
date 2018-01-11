@@ -22,6 +22,7 @@ COPY /lib lib/
 COPY /tests tests/
 COPY main.rb .
 COPY Gemfile .
+COPY Rakefile .
 RUN /bin/bash -l -c "bundle install --gemfile=./Gemfile"
 
 # Copies the content of the folder ./test into a new folder test/ on the container
