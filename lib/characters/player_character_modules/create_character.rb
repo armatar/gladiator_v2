@@ -24,7 +24,8 @@ module CreateCharacter
 
   def update_value(value_string, point_string, num_to_update)
     update_stat(value_string, num_to_update)
-    self.send("#{point_string}=", num_to_update) if num_to_update
+    final_num = send(point_string) - num_to_update if num_to_update
+    send("#{point_string}=", final_num) if num_to_update
   end
 
   def update_attributes
@@ -100,7 +101,7 @@ module CreateCharacter
       error = nil
       num_to_update = ask_question('How many points do you want to update?',
                                    "Add a negative number to subtract!\nType [back] to return.")
-      if /\A[-+]?\d+\z/ === num_to_update 
+      if /\A[-+]?\d+\z/ === num_to_update
         result = current + num_to_update.to_i
         if result > max
           error = "Can't go that high. Max: #{max}"

@@ -29,4 +29,20 @@ class Game
     @character = PlayerCharacter.new(name.upcase)
     @character.create_character
   end
+
+  def play
+    main_menu
+    loop do
+      case ask_question('What would you like to do?')
+      when 'fight'
+        new_game
+      when 'shop'
+        print_error_message('Not currently an availble option')
+      when 'exit'
+        break
+      else
+        print_error_message('Please pick from the menu above.')
+      end
+    end
+  end
 end
