@@ -1,4 +1,7 @@
 language: ruby
+sudo: required
+services:
+  -docker
 rvm:
  - 2.4.0
 script:
