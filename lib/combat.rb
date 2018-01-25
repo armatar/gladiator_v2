@@ -21,7 +21,10 @@ class Combat
   def fight
     continue_combat = true
     continue_combat = auto_attack_round while continue_combat
+    clear_screen
     display_battle_log(@battle_log)
+    pause
+    @victory
   end
 
   def auto_attack_round
@@ -96,9 +99,11 @@ class Combat
   def combat_response(all_allies_dead, all_enemies_dead)
     if all_allies_dead
       @battle_log.push('All allies have died! Enemies win!')
+      @victory = false
       true
     elsif all_enemies_dead
       @battle_log.push('All enemies have died! Allies win!')
+      @victory = true
       true
     else
       false

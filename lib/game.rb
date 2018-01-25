@@ -2,6 +2,7 @@ require_relative 'ui_modules/game_ui.rb'
 require_relative 'ui_modules/basic_ui.rb'
 require_relative 'characters/player_character.rb'
 require_relative 'factories/random_character_factory.rb'
+require_relative 'combat.rb'
 
 # Class to actually start the game from a player perspective.
 class Game
@@ -45,8 +46,7 @@ class Game
       when 'fight'
         combat = Combat.new(@character.party,
                             RandomCharacterFactory.randomize(1, 'Enemy 1', false).party)
-        result = combat.fight
-        puts "result: #{result.inspect}"
+        break unless combat.fight
       when 'shop'
         error_message = 'Not currently an availble option'
       when 'exit'
