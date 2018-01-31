@@ -1,6 +1,6 @@
 # Create Caracter Creation
 
-### Status: proposed
+### Status: completed
 
 ## Context: 
 
